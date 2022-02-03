@@ -1,7 +1,11 @@
 //colors
 $rost: #8E443D;
 $white: #ffffff;
+$black: #0C0C0C;
 $elite: 'Special Elite', cursive;
+body{
+    overflow-x: hidden !important;
+}
 
 @font-face{
     font-family: 'Special Elite';

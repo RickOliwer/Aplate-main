@@ -1,15 +1,17 @@
 import isEmpty from 'lodash.isempty';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import 'tailwindcss/tailwind.css'
 import Dropdown from './dropdown';
 //import isEmpty from "lodash.isempty"
 
 const Nav = ({ header, headerMenus }) => {
-
+    const [isDropdownIndex, setDropDownIndex] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     return (
-        <nav className='flex w-full h-44 text-gray-700 justify-between xl:px-40 lg:px-32 md:px-20 px-14 items-center navbar'>
-            <div className='relative h-32 w-52'>
+        <nav className='flex w-full lg:h-44 h-32 text-gray-700 justify-between xl:px-40 lg:px-32 md:px-20 px-8 items-center navbar'>
+            <div className='relative md:h-32 md:w-52 h-20 w-36'>
 
                 <Image 
                     layout="fill"
@@ -21,8 +23,13 @@ const Nav = ({ header, headerMenus }) => {
                     alt="logo"
                 />
             </div>
+            <div onClick={() => setIsOpen(!isOpen)} className={`nav_button ${isOpen ? 'click' : '' }`} id="nav_button">
+                    <span className="line"></span>
+                    <span className="line"></span>
+                    <span className="line"></span>
+            </div>
 
-            <div className='link-items items-center'>
+            <div className={`link-items items-center ${isOpen ? 'link-items-active' : '' }`}>
 
                 {headerMenus?.map( (menus, index) => (
                         
@@ -32,7 +39,7 @@ const Nav = ({ header, headerMenus }) => {
                                  {menus?.node?.label}.
                              </a>
                         </Link>
-                    : <Dropdown key={menus?.node?.id} index={index} label={menus?.node?.label} children={menus?.node?.childItems?.edges} />
+                    : <Dropdown set={setDropDownIndex} is={isDropdownIndex} key={menus?.node?.id} index={index} label={menus?.node?.label} kids={menus?.node?.childItems?.edges} />
                 ))}
             </div>
         </nav>

@@ -1,27 +1,28 @@
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-const Dropdown = ( { children, label, index } ) => {
-    const [isDropdown, setDropdown] = useState(false)
+const Dropdown = ( { kids, label, index, is, set } ) => {
     const dropItems = useRef()
+
 
 
     useEffect(() =>{
        
-            if(isDropdown){
-                dropItems.current.style.animation = `dropDownShow 0.5s ease forwards .4s`
-            } else if(!isDropdown){
+            if(is === index){
+                dropItems.current.style.animation = `dropDownShow 0.5s ease forwards`
+            } else if(is !== index){
                 dropItems.current.style.animation = ""
             }
 
-    }, [isDropdown])
+
+    }, [is, index])
 
     return (
         <div className="dropdown-container">
-            <p onClick={() => setDropdown(!isDropdown)} className="cursor-pointer special-elite dropdown-button">{label}.</p>
+            <button onClick={() => set(is !== index ? index : false)} className="cursor-pointer special-elite dropdown-button">{label}.</button>
 
-            <div ref={dropItems} className={`${isDropdown ? 'show' : 'hide'}  dropdown`}>
-                {children?.map((child) =>{
+            <div ref={dropItems} className={`dropdown ${is === index ? 'show' : ''}`}>
+                {kids?.map((child) =>{
                     return <Link key={child?.node?.id}  href={child?.node?.path}>
                                 <a className="drop-item">{child?.node?.label}</a>
                             </Link>
