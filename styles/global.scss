@@ -1,0 +1,18 @@
+//colors
+$rost: #8E443D;
+$white: #ffffff;
+$elite: 'Special Elite', cursive;
+
+@font-face{
+    font-family: 'Special Elite';
+    src: url(../public/fonts/Special_Elite/SpecialElite-Regular.ttf);
+    font-weight: 400;
+    font-display: swap;
+}
+
+
+.special-elite{
+    font-family: 'Special Elite', cursive;
+}
+
+@import 'layout/header/nav'

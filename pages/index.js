@@ -21,7 +21,6 @@ export async function getStaticProps(){
       uri: '/',
     }
   })
-  console.log(data);
 
   const defaultProps = {
     props: {

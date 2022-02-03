@@ -1,0 +1,79 @@
+.navbar{
+
+        .link-items{
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+
+                .link-item{
+
+
+                        &:nth-last-child(-n+1){
+                            background-color: $rost;
+                            padding: 14px 22px;
+                            color: $white;
+                        }
+                }
+
+                .dropdown-container{
+                    
+                    position: relative;
+
+
+
+                        .show{
+                            
+                            position: absolute;
+                            left: 50%;
+                            top: 180%;
+                            transform: translateX(-50%);
+                            text-align: right;
+                            padding: 17px;
+                            width: 180px;
+                            display: flex;
+                            flex-direction: column;
+                            opacity: 0;
+                            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+                            background: #FFFFFF;
+                            border-radius: 2px;
+                                .drop-item{
+                                    padding-bottom: 17px;
+                                    font-family: $elite;
+                                }
+
+                        }
+
+                        .hide{
+                            
+                            position: absolute;
+                            left: 50%;
+                            bottom: 0;
+                            transform: translateX(-50%);
+                            transform: translateY(-110px);
+                            text-align: right;
+                            padding: 17px;
+                            width: 180px;
+                            display: flex;
+                            flex-direction: column;
+                            opacity: 0;
+                            
+                                .drop-item{
+                                    padding-bottom: 17px;
+                                }
+                        }
+                }
+        }
+}
+
+@keyframes dropDownShow{
+    from{
+        
+        opacity: 0;
+        width: 0;
+    }
+    to{
+        
+        opacity: 1;
+        width: 180px;
+    }
+}
