@@ -16,8 +16,6 @@ const Nav = ({ header, headerMenus }) => {
                 <Image 
                     layout="fill"
                     objectFit="contain"
-                    width="100%" 
-                    height="100%" 
                     src={header?.siteLogoUrl}
                     priority
                     alt="logo"
