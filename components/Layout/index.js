@@ -4,6 +4,7 @@ import { sanitize } from "../../src/utils/miscellaneous";
 import Seo from "../seo";
 import Footer from "./footer";
 import Header from "./header";
+import Hero from "./hero";
 
 const Layout = ({children, data}) => {
 
@@ -11,7 +12,7 @@ const Layout = ({children, data}) => {
         return null
     }
     
-    const {page, header, headerMenus, footerMenus} = data || {};
+    const {page, header, headerMenus, HeroImage, footerMenus} = data || {};
     return (
         <div>
             <Seo seo={page?.seo} uri={page?.uri} />
@@ -29,6 +30,7 @@ const Layout = ({children, data}) => {
                 
             </Head>
             <Header header={header} headerMenus={headerMenus?.edges} page={page} />
+            <Hero hero={HeroImage?.hero?.sektion[0]} />
                 <main className="layout">
                     {children}
                 </main>

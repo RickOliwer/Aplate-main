@@ -1,20 +1,14 @@
 import isEmpty from 'lodash.isempty';
-import { sanitize } from '../../../src/utils/miscellaneous'
 import Link from 'next/link'
-import SvgInstagram from '../../icons/Instagram';
-import SvgFacebook from '../../icons/Facebook';
-import SvgLinkedin from '../../icons/Linkedin';
-import SvgFooterLogo from '../../icons/FooterLogo';
-import SvgFooterLogoMax from '../../icons/FooterLogoMax';
+import * as SvgsComp from '../../icons'
 
 const Footer = ( { footerMenus } ) => {
-    console.log(footerMenus);
     return (
         <footer className="layout aplate-bg text-white">
             {/* widgets */}
             <div className="footer_container grid-4 py-16 ">
                 <div className="">
-                    <SvgFooterLogo />
+                    <SvgsComp.FooterLogo />
                 </div>
                 <div className="">
                     <h2 className='mb-4 text-xl'>Information.</h2>
@@ -24,8 +18,12 @@ const Footer = ( { footerMenus } ) => {
                             {
                                 footerMenus?.edges?.map((footerMenu) =>{
                                     return <li className='mb-4' key={footerMenu?.node?.id}>
-                                        <Link href={footerMenu?.node?.path}><a className='urbanist my-hover'>{footerMenu?.node?.label}</a></Link>
-                                    </li>
+                                                <Link href={footerMenu?.node?.path}>
+                                                    <a className='urbanist my-hover'>
+                                                        {footerMenu?.node?.label}
+                                                    </a>
+                                                </Link>
+                                            </li>
                                 })
                             }
                         </ul>
@@ -36,18 +34,18 @@ const Footer = ( { footerMenus } ) => {
                     <div className='flex mb-20 justify-between'>
                         <Link href="https://www.facebook.com/">
                             <a className=''>
-                                <SvgFacebook />
+                                <SvgsComp.Facebook />
                             </a>
                         </Link>
 
                         <Link href="https://instagram.com/">
                             <a>
-                                <SvgInstagram />
+                                <SvgsComp.Instagram />
                             </a>
                         </Link>
                         <Link href="https://se.linkedin.com/">
                             <a>
-                                <SvgLinkedin />
+                                <SvgsComp.Linkedin />
                             </a>
                         </Link>
                         

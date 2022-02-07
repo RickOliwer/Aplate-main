@@ -28,6 +28,34 @@ export const HeaderFooter = `
         }
       }
     }
+    HeroImage: gqlHero {
+      hero {
+        sektion {
+          ... on GqlHero_Hero_Sektion_Galleri {
+            fieldGroupName
+            bilder {
+              knapp {
+                ... on Post {
+                  id
+                  uri
+                  title
+                }
+                ... on Page {
+                  id
+                  uri
+                  title
+                }
+              }
+              bild {
+                altText
+                mediaItemUrl
+                id
+              }
+            }
+          }
+        }
+      }
+    }
     footerMenus: menuItems(where: {location: HCMS_MENU_FOOTER, parentId: "0"}) {
       edges {
         node {
