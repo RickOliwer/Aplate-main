@@ -11,7 +11,7 @@ const Layout = ({children, data}) => {
         return null
     }
     
-    const {page, header, footer, headerMenus, footerMenus} = data || {};
+    const {page, header, headerMenus, footerMenus} = data || {};
     return (
         <div>
             <Seo seo={page?.seo} uri={page?.uri} />
@@ -29,10 +29,10 @@ const Layout = ({children, data}) => {
                 
             </Head>
             <Header header={header} headerMenus={headerMenus?.edges} page={page} />
-                <main className="xl:px-40 lg:px-32 md:px-20 px-8">
+                <main className="layout">
                     {children}
                 </main>
-            <Footer footer={footer}/>
+            <Footer footerMenus={footerMenus} />
         </div>
     );
 }

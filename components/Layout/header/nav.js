@@ -10,7 +10,7 @@ const Nav = ({ header, headerMenus }) => {
     const [isDropdownIndex, setDropDownIndex] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     return (
-        <nav className='flex w-full lg:h-44 h-32 text-gray-700 justify-between xl:px-40 lg:px-32 md:px-20 px-8 items-center navbar'>
+        <nav className='flex w-full lg:h-44 h-32 text-gray-700 justify-between layout items-center navbar'>
             <div className='relative md:h-32 md:w-52 h-20 w-36'>
 
                 <Image 

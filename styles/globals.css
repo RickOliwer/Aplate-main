@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.layout{
+    @apply lg:px-28 md:px-20 px-8;
+}
+
+.grid-2{
+    @apply grid lg:grid-cols-2 gap-11;
+}
+
+.grid-3{
+    @apply grid lg:grid-cols-3 gap-11;
+}
+
+
+.grid-4{
+    @apply grid lg:grid-cols-4 md:grid-cols-2 gap-32;
+}

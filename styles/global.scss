@@ -2,9 +2,13 @@
 $rost: #8E443D;
 $white: #ffffff;
 $black: #0C0C0C;
+$green: #0f4127cc;
 $elite: 'Special Elite', cursive;
 body{
     overflow-x: hidden !important;
+}
+.icons{
+    margin: 0 !important;
 }
 
 @font-face{
@@ -14,9 +18,51 @@ body{
     font-display: swap;
 }
 
+@font-face{
+    font-family: 'Urbanist';
+    src: url(../public/fonts/Urbanist/static/Urbanist-Regular.ttf);
+    font-weight: 400;
+    font-display: swap;
+}
 
-.special-elite{
+@font-face{
+    font-family: 'Urbanist';
+    src: url(../public/fonts/Urbanist/static/Urbanist-Medium.ttf);
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face{
+    font-family: 'Urbanist';
+    src: url(../public/fonts/Urbanist/static/Urbanist-SemiBold.ttf);
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face{
+    font-family: 'Urbanist';
+    src: url(../public/fonts/Urbanist/static/Urbanist-Bold.ttf);
+    font-weight: 700;
+    font-display: swap;
+}
+
+h1, h2, h3, h4, h5, a, .special-elite{
     font-family: 'Special Elite', cursive;
+}
+
+p, .urbanist{
+    font-family: 'Urbanist', sans-serif;
+}
+
+.aplate-bg{
+    background-color: $black;
+}
+
+.my-hover{
+
+    &:hover{
+        color: $rost;
+    }
 }
 
 @import 'layout/header/nav'
