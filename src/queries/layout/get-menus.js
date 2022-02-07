@@ -34,6 +34,8 @@ export const HeaderFooter = `
           ... on GqlHero_Hero_Sektion_Galleri {
             fieldGroupName
             bilder {
+              installning
+              text
               knapp {
                 ... on Post {
                   id

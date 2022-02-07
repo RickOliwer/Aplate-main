@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(36, 1fr);
-    height: 690px;
+    height: 680px;
     width: 100%;
     gap: 10px;
 
@@ -28,8 +28,16 @@
                 &:nth-child(2){
                     grid-column: span 2;
                     grid-row: span 10;
-                    margin-left: 2px;
-                    margin-right: 2px;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    writing-mode: vertical-rl;
+                    text-orientation: upright;
+                    font-size: 18px;
+                    font-weight: bold;
+                    letter-spacing: 7px;
+                    
 
                 }
                 &:nth-child(3){
@@ -92,8 +100,8 @@
                     &:nth-child(2){
                         grid-column: span 2;
                         grid-row: span 16;
-                        margin-left: 14px;
-                        margin-right: 14px;
+                        font-size: 29px;
+                        letter-spacing: 12px;
     
                     }
                     &:nth-child(3){
