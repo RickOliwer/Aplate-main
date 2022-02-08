@@ -1,8 +1,8 @@
 import Blurb from "./sections/blurb";
+import InfoSection from "./sections/infoSektion";
 import Jumbotron from "./sections/jumbotron";
 
 const Blocks = ( { blocks } ) => {
-    console.log(blocks);
     return (
         <div>
             {blocks?.sektion?.map((block, index) => {
@@ -21,6 +21,9 @@ export const Block = ( { section } ) => {
             break;
         case "Page_GqlFrontpage_Sektion_Jumbotron":
             return <Jumbotron content={section} />
+            break;
+        case "Page_GqlFrontpage_Sektion_InfoSektion":
+            return <InfoSection content={section} />
             break;
         default:
             return <div>{section.fieldGroupName}</div>;

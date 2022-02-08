@@ -5,8 +5,6 @@ import { handleRedirectsAndReturnData } from "../src/utils/slug";
 
 export default function Home({ data }) {
   
-  console.log('my data',data?.page?.GQL_frontPage);
-  
   return (
       <>
         <Blocks blocks={data?.page?.GQL_frontPage} />

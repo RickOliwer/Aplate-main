@@ -4,7 +4,7 @@ import * as SvgsComp from '../../icons'
 
 const Footer = ( { footerMenus } ) => {
     return (
-        <footer className="layout aplate-bg text-white">
+        <footer className="layout layout-top aplate-bg text-white">
             {/* widgets */}
             <div className="footer_container grid-4 py-16 ">
                 <div className="">

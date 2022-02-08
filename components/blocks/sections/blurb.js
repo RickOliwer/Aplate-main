@@ -5,7 +5,7 @@ import { ArrowBlack } from '../../icons';
 
 const Blurb = ( { content } ) => {
     return (
-        <div className="layout">
+        <div className="layout layout-top">
             <div className="grid md:grid-cols-3 gap-24">
                 {
                     content?.blurb?.map((b) => {

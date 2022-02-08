@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import 'tailwindcss/tailwind.css'
 import Dropdown from './dropdown';
-//import isEmpty from "lodash.isempty"
 
 const Nav = ({ header, headerMenus }) => {
     const [isDropdownIndex, setDropDownIndex] = useState(false)

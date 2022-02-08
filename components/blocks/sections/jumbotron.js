@@ -3,7 +3,6 @@ import Link from "next/link";
 
 const Jumbotron = ( { content } ) => {
 
-    console.log('my jumbo', content);
     return (
         <div className="jumbotron relative layout-top">
             <Image 
