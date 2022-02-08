@@ -24,7 +24,7 @@ const Hero = ( { hero } ) => {
                         )
                     } else if(img?.installning == 'Text'){
                         return (
-                            <div className="hero-img">
+                            <div key={img?.text} className="hero-img">
                                 <h1>{img?.text}</h1>
                             </div>
                         )

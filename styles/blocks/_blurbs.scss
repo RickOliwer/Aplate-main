@@ -1,0 +1,13 @@
+.blurbs{
+    position: relative;
+
+        .hero-link{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+                a{
+                    font-family: 'Urbanist-Italic', sans-serif;
+                }
+        }
+}

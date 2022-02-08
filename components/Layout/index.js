@@ -31,7 +31,7 @@ const Layout = ({children, data}) => {
             </Head>
             <Header header={header} headerMenus={headerMenus?.edges} page={page} />
             <Hero hero={HeroImage?.hero?.sektion[0]} />
-                <main className="layout">
+                <main>
                     {children}
                 </main>
             <Footer footerMenus={footerMenus} />

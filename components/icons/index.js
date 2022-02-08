@@ -1,6 +1,11 @@
+export { default as ArrowBlack } from "./ArrowBlack";
 export { default as Arrow } from "./Arrow";
+export { default as Grouplunch } from "./Grouplunch";
+export { default as Catering } from "./Catering";
+export { default as Cocktailglas } from "./Cocktailglas";
 export { default as Facebook } from "./Facebook";
 export { default as FooterLogoMax } from "./FooterLogoMax";
 export { default as FooterLogo } from "./FooterLogo";
 export { default as Instagram } from "./Instagram";
 export { default as Linkedin } from "./Linkedin";
+export { default as Talrik } from "./Talrik";

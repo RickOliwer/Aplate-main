@@ -1,15 +1,16 @@
+import Blocks from "../components/blocks";
 import Client from "../src/apollo/client"
 import { GET_PAGE } from "../src/queries/pages/get-page"
 import { handleRedirectsAndReturnData } from "../src/utils/slug";
 
 export default function Home({ data }) {
   
+  console.log('my data',data?.page?.GQL_frontPage);
   
   return (
-      <h1 className="text-3xl font-bold underline">
-        Hello there
-      </h1>
-    
+      <>
+        <Blocks blocks={data?.page?.GQL_frontPage} />
+      </>
   )
 }
 

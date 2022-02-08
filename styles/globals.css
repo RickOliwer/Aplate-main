@@ -4,7 +4,11 @@
 
 
 .layout{
-    @apply lg:px-28 md:px-20 px-8;
+    @apply lg:px-28 md:px-20 px-8 md:mt-28 mt-20;
+}
+
+.layout-top{
+    @apply md:mt-28 mt-20;
 }
 
 .grid-2{

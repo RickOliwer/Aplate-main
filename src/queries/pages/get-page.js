@@ -22,6 +22,7 @@ query GET_PAGE($uri: String) {
               symbol
               rubrik
               text
+              avslut
               knapp {
                 text
                 url {
@@ -66,8 +67,10 @@ query GET_PAGE($uri: String) {
           }
           ... on Page_GqlFrontpage_Sektion_InfoSektion {
             fieldGroupName
-            rubrik
+            rubrik1
+            rubrik2
             text
+            avslut
             knapp {
               text
               url {
