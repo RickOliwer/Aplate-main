@@ -31,7 +31,7 @@ const Hero = ( { hero } ) => {
                     } else {
                         return(
                             <div key={img?.bild?.id} className="relative hero-img knapp">
-                                <div className="hero-link flex items-baseline absolute z-10 bottom-6 right-6 text-white">
+                                <div className="hero-link flex items-baseline absolute z-10 bottom-2 right-6 text-white">
 
                                     <Link href={img?.knapp?.uri}>
                                         <a>

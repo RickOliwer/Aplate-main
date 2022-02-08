@@ -9,7 +9,7 @@ const Dropdown = ( { kids, label, index, is, set } ) => {
     useEffect(() =>{
        
             if(is === index){
-                dropItems.current.style.animation = `dropDownShow 0.5s ease forwards`
+                dropItems.current.style.animation = `dropDownShow 0.5s ease forwards .1s`
             } else if(is !== index){
                 dropItems.current.style.animation = ""
             }

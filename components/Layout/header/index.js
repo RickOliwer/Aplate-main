@@ -4,7 +4,7 @@ import Nav from "./nav";
 const Header = ({header, headerMenus, page}) => {
 
     return ( 
-        <header className="w-full">
+        <header className="w-full lg:h-44 h-32">
                 <Nav header={header} headerMenus={headerMenus} />
         </header>
     );

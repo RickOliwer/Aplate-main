@@ -12,7 +12,7 @@ const Blurb = ( { content } ) => {
                         return (
                             <div key={b?.rubrik} className="text-center items-center blurbs px-10 pb-10">
                                 <div className='mb-4 flex mr-0 justify-center'>{getIconComponentByName(b?.symbol)}</div>
-                                <h3 className='mb-6 text-2xl' dangerouslySetInnerHTML={{ __html: sanitize(b?.rubrik) }} />
+                                <h3 className='mb-1 text-2xl' dangerouslySetInnerHTML={{ __html: sanitize(b?.rubrik) }} />
                                 <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.text) }} />
                                 <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.avslut) }} />
 
