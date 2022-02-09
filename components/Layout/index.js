@@ -13,6 +13,7 @@ const Layout = ({children, data}) => {
     }
     
     const {page, subPage, header, headerMenus, HeroImage, footerMenus} = data || {};
+    console.log('what page?', headerMenus);
     return (
         <div>
             <Seo seo={page?.seo || subPage?.seo } uri={page?.uri || subPage.uri} />

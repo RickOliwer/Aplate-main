@@ -59,6 +59,10 @@ query GET_SUB_PAGE($uri: String) {
                     mediaItemUrl
                 }
             }
+            ... on Page_GqlPagecontent_Sektion_CateringBlog {
+                blog
+                fieldGroupName
+            }
             ... on Page_GqlPagecontent_Sektion_BildLankar {
                 fieldGroupName
                 bildLank {

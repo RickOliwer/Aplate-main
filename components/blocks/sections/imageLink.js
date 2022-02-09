@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ArrowBigger } from "../../icons";
 
 const ImageLink = ( { content } ) => {
-    console.log('img link', content);
     return (
         <div className="layout layout-top grid-2 image-links">
             {content?.bildLank?.map((img) =>{
