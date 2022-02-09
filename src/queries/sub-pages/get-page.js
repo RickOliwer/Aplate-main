@@ -27,23 +27,36 @@ query GET_SUB_PAGE($uri: String) {
             ... on Page_GqlPagecontent_Sektion_Jumbotron {
                 fieldGroupName
                 installningar {
-                infoJumbotron
+                    infoJumbotron
                 }
                 rubrik
                 utdrag
                 kontakt {
-                eMail
-                telefon
+                    eMail
+                    telefon
                 }
                 text
                 lista {
-                text
+                    text
                 }
                 avslut
+                knapp {
+                    text
+                    url {
+                      ... on Post {
+                        id
+                        uri
+                      }
+                      ... on Page {
+                        id
+                        uri
+                      }
+                    }
+                }
                 bild {
-                altText
-                id
-                mediaItemUrl
+                    altText
+                    id
+                    mediaItemUrl
                 }
             }
             ... on Page_GqlPagecontent_Sektion_BildLankar {

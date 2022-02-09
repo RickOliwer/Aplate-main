@@ -5,6 +5,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+          '50vh': '50vh',
+          '55vh': '55vh',
+          '60vh': '60vh',
+          '65vh': '65vh',
+          '70vh': '70vh',
+          '75vh': '75vh',
+          '80vh': '80vh',
+          '85vh': '85vh',
+          '90vh': '90vh',
+
+      },
       colors: {
         aplate: {
           rost: '#8E443D',

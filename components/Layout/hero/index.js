@@ -55,7 +55,7 @@ const Hero = ( { hero, page, title } ) => {
                 hero?.bilder?.map((img, index) => {
                     if (index === 6){
                         return (
-                            <div className="relative hero-img bg-aplate-rost">
+                            <div key={img?.bild?.id} className="relative hero-img bg-aplate-rost">
                                 <h1 className="text-2xl dead-center text-aplate-white lg:text-4xl md:text-2xl">{title}</h1>
                             </div>
                         )

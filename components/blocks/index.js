@@ -1,4 +1,5 @@
 import Blurb from "./sections/blurb";
+import ImageLink from "./sections/imageLink";
 import InfoSection from "./sections/infoSektion";
 import Jumbotron from "./sections/jumbotron";
 
@@ -24,6 +25,15 @@ export const Block = ( { section } ) => {
             break;
         case "Page_GqlFrontpage_Sektion_InfoSektion":
             return <InfoSection content={section} />
+            break;
+        case "Page_GqlPagecontent_Sektion_Blurbs":
+            return <Blurb content={section} />
+            break;
+        case "Page_GqlPagecontent_Sektion_Jumbotron":
+            return <Jumbotron content={section} />
+            break;
+        case "Page_GqlPagecontent_Sektion_BildLankar":
+            return <ImageLink content={section} />
             break;
         default:
             return <div>{section.fieldGroupName}</div>;

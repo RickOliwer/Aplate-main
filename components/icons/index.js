@@ -1,5 +1,6 @@
 export { default as ArrowBlack } from "./ArrowBlack";
 export { default as Arrow } from "./Arrow";
+export { default as ArrowBigger } from "./ArrowBigger";
 export { default as Grouplunch } from "./Grouplunch";
 export { default as Catering } from "./Catering";
 export { default as Cocktailglas } from "./Cocktailglas";

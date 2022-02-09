@@ -11,8 +11,6 @@ const Page = ( { data } ) => {
     if(router.isFallback){
         return <div>Loading...</div>
     }
-
-    console.log('sub page data', data);
     return (
         <>
             <Blocks blocks={data?.subPage?.Gql_pageContent} />

@@ -24,20 +24,25 @@ const Nav = ({ header, headerMenus }) => {
     })
 
     return (
-        <nav className='w-full fixed z-40'>
+        <nav className='fixed z-40 w-full'>
 
         
         <div className={`flex text-aplate-black justify-between layout items-center navbar ${ isMenuScroll ? 'navbar-color h-20' : 'lg:h-44 h-32'}`}>
-            <div className={`relative logo z-50 ${isMenuScroll ? ' h-12 w-32' : 'md:h-32 md:w-52 h-20 w-36'}`}>
 
-                <Image 
-                    layout="fill"
-                    objectFit="contain"
-                    src={header?.siteLogoUrl}
-                    priority
-                    alt="logo"
-                />
-            </div>
+            <Link href="/">
+                <a>
+                    <div className={`relative logo z-50 ${isMenuScroll ? ' h-12 w-28' : 'md:h-32 md:w-52 h-20 w-36'}`}>
+
+                        <Image 
+                            layout="fill"
+                            objectFit="contain"
+                            src={header?.siteLogoUrl}
+                            priority
+                            alt="logo"
+                        />
+                    </div>
+                </a>
+            </Link>
             <div onClick={() => setIsOpen(!isOpen)} className={`nav_button ${isOpen ? 'click' : '' }`} id="nav_button">
                     <span className="line"></span>
                     <span className="line"></span>
@@ -50,7 +55,7 @@ const Nav = ({ header, headerMenus }) => {
                             
                         isEmpty(menus?.node?.childItems?.edges) ?
                             <Link key={menus?.node?.id} href={menus?.node?.path}>
-                                <a className="link-item special-elite">
+                                <a onClick={() => setIsOpen(!isOpen)} className="link-item special-elite">
                                     {menus?.node?.label}.
                                 </a>
                             </Link>

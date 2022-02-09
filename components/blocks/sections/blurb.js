@@ -1,30 +1,30 @@
+import isEmpty from 'lodash.isempty';
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 import { getIconComponentByName } from '../../../src/utils/icons-map';
 import {sanitize} from '../../../src/utils/miscellaneous'
 import { ArrowBlack } from '../../icons';
 
 const Blurb = ( { content } ) => {
+    const [isLayoutOne, setLayoutOne] = useState(false)
+    const [isLayoutTwo, setLayoutTwo] = useState(false)
+    const layout = useRef()
+
+    useEffect(() => {
+        if(layout.current.childNodes.length === 1){
+            setLayoutOne(true)
+        }
+        if(layout.current.childNodes.length === 2){
+            setLayoutTwo(true)
+        }
+    }, [layout, setLayoutOne, setLayoutTwo])
     return (
         <div className="layout layout-top">
-            <div className="grid md:grid-cols-3 gap-24">
+            <div ref={layout} className={`grid gap-24 md:grid-cols-3 ${isLayoutOne ? 'md:grid-cols-1 lg:px-72 md:px-44' : ''} ${isLayoutTwo ? 'md:grid-cols-2' : ''}`}>
                 {
                     content?.blurb?.map((b) => {
                         return (
-                            <div key={b?.rubrik} className="text-center items-center blurbs px-10 pb-10">
-                                <div className='mb-4 flex mr-0 justify-center'>{getIconComponentByName(b?.symbol)}</div>
-                                <h3 className='mb-1 text-2xl' dangerouslySetInnerHTML={{ __html: sanitize(b?.rubrik) }} />
-                                <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.text) }} />
-                                <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.avslut) }} />
-
-                                <div className="hero-link flex items-baseline text-aplate-black">
-                                    <Link href={b?.knapp?.url?.uri}>
-                                        <a>
-                                            {b?.knapp?.text}
-                                        </a>
-                                    </Link>
-                                    <ArrowBlack className="icon-hover ml-5" />
-                                </div>
-                            </div>
+                            <TheBlurb key={b?.rubrik} b={b} />
                         )
                     })
                 }
@@ -34,3 +34,26 @@ const Blurb = ( { content } ) => {
 }
  
 export default Blurb;
+
+export const TheBlurb = ( { b } ) => {
+    return (
+        <div className="items-center px-10 pb-10 text-center blurbs">
+            <div className='flex justify-center mb-4 mr-0'>{getIconComponentByName(b?.symbol)}</div>
+            <h3 className='mb-1 text-2xl' dangerouslySetInnerHTML={{ __html: sanitize(b?.rubrik) }} />
+            <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.text) }} />
+            <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.avslut) }} />
+
+            {! isEmpty(b?.knapp?.url?.uri) ? (
+
+                <div className="flex items-baseline hero-link text-aplate-black">
+                    <Link href={b?.knapp?.url?.uri}>
+                        <a>
+                            {b?.knapp?.text}
+                        </a>
+                    </Link>
+                    <ArrowBlack className="ml-5 icon-hover" />
+                </div>
+            ) : null}
+        </div>
+    )
+}
