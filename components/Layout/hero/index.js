@@ -4,11 +4,10 @@ import Link from "next/link";
 import { useRef } from "react";
 import { Arrow } from "../../icons";
 
-const Hero = ( { hero } ) => {
-
+const Hero = ( { hero, page, title } ) => {
     return (
         <div className="layout hero-grid">
-            {
+            {page == '/' ? (
                 hero?.bilder?.map((img) => {
                     if(isEmpty(img?.knapp) && img?.installning == 'Bild'){
                         return (
@@ -31,14 +30,14 @@ const Hero = ( { hero } ) => {
                     } else {
                         return(
                             <div key={img?.bild?.id} className="relative hero-img knapp">
-                                <div className="hero-link flex items-baseline absolute z-10 bottom-2 right-6 text-white">
+                                <div className="absolute z-10 flex items-baseline text-white hero-link bottom-2 right-6">
 
                                     <Link href={img?.knapp?.uri}>
                                         <a>
                                             {img?.knapp?.title}
                                         </a>
                                     </Link>
-                                    <Arrow className="icon-hover ml-5" />
+                                    <Arrow className="ml-5 icon-hover" />
                                 </div>
                                 
                                 <Image
@@ -52,7 +51,36 @@ const Hero = ( { hero } ) => {
                         )
                     }
                 })
-            }
+            ) : (
+                hero?.bilder?.map((img, index) => {
+                    if (index === 6){
+                        return (
+                            <div className="relative hero-img bg-aplate-rost">
+                                <h1 className="text-2xl dead-center text-aplate-white lg:text-4xl md:text-2xl">{title}</h1>
+                            </div>
+                        )
+                    }
+                    if(!isEmpty(img?.bild) && img?.installning == 'Bild'){
+                        return (
+                            <div key={img?.bild?.id} className="relative hero-img">
+                                <Image
+                                    layout="fill"
+                                    objectFit="cover"
+                                    src={img?.bild?.mediaItemUrl}
+                                    alt={img?.bild?.altText}
+                                    priority
+                                />
+                            </div>
+                        )
+                    } else if(img?.installning == 'Text'){
+                        return (
+                            <div key={img?.text} className="hero-img">
+                                <h1>{img?.text}</h1>
+                            </div>
+                        )
+                    }
+                })
+            )}
         </div>
     );
 

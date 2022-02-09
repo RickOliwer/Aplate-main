@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import SeoFragment from "../fragments/seo";
+//import SubPageFragment from "../fragments/sub-pages";
 import { HeaderFooter } from "../layout/get-menus";
 
 export const GET_PAGE = gql`

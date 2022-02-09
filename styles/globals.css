@@ -4,11 +4,11 @@
 
 
 .layout{
-    @apply lg:px-20 md:px-16 px-8;
+    @apply px-8 lg:px-20 md:px-16;
 }
 
 .layout-top{
-    @apply md:mt-32 mt-20;
+    @apply mt-20 md:mt-32;
 }
 
 .grid-2{
@@ -21,5 +21,9 @@
 
 
 .grid-4{
-    @apply grid lg:grid-cols-4 md:grid-cols-2 gap-32;
+    @apply grid gap-32 lg:grid-cols-4 md:grid-cols-2;
+}
+
+.dead-center {
+    @apply absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4;
 }

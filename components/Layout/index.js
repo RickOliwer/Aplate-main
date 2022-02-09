@@ -8,17 +8,19 @@ import Hero from "./hero";
 
 const Layout = ({children, data}) => {
 
-    if(isEmpty(data?.page)){
+    if(isEmpty(data?.page || data?.subPage)){
         return null
     }
     
-    const {page, header, headerMenus, HeroImage, footerMenus} = data || {};
+    const {page, subPage, header, headerMenus, HeroImage, footerMenus} = data || {};
+
+    console.log('page', subPage?.title);
     return (
         <div>
-            <Seo seo={page?.seo} uri={page?.uri} />
+            <Seo seo={page?.seo || subPage?.seo } uri={page?.uri || subPage.uri} />
             <Head>
             <link rel="shortcut icon" href={ header?.favicon } />
-                {page?.seo?.schemaDetails && (
+                {page?.seo?.schemaDetails || subPage?.seo?.schemaDetails && (
                     <script 
                         type='application/ld+json'
                         className='yoast-schema-graph'
@@ -30,7 +32,7 @@ const Layout = ({children, data}) => {
                 
             </Head>
             <Header header={header} headerMenus={headerMenus?.edges} page={page} />
-            <Hero hero={HeroImage?.hero?.sektion[0]} />
+            <Hero hero={HeroImage?.hero?.sektion[0]} page={page?.uri} title={subPage?.title} />
                 <main>
                     {children}
                 </main>
