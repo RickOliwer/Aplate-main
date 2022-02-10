@@ -22,6 +22,15 @@ export const HeaderFooter = `
                 url
                 path
                 order
+                connectedNode {
+                  node {
+                    ... on GQLCateringKategori {
+                      id
+                      name
+                      slug
+                    }
+                  }
+                }
               }
             }
           }

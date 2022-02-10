@@ -8,15 +8,14 @@ import Hero from "./hero";
 
 const Layout = ({children, data}) => {
 
-    if(isEmpty(data?.page || data?.subPage)){
+    if(isEmpty(data?.page || data?.subPage || data?.cateringPage)){
         return null
     }
     
-    const {page, subPage, header, headerMenus, HeroImage, footerMenus} = data || {};
-    console.log('what page?', headerMenus);
+    const {page, subPage, cateringPage, header, headerMenus, HeroImage, footerMenus} = data || {};
     return (
         <div>
-            <Seo seo={page?.seo || subPage?.seo } uri={page?.uri || subPage.uri} />
+            <Seo seo={page?.seo || subPage?.seo} uri={page?.uri || subPage?.uri} />
             <Head>
             <link rel="shortcut icon" href={ header?.favicon } />
                 {page?.seo?.schemaDetails || subPage?.seo?.schemaDetails && (
@@ -31,7 +30,7 @@ const Layout = ({children, data}) => {
                 
             </Head>
             <Header header={header} headerMenus={headerMenus?.edges} page={page} />
-            <Hero hero={HeroImage?.hero?.sektion[0]} page={page?.uri} title={subPage?.title} />
+            <Hero hero={HeroImage?.hero?.sektion[0]} page={page?.uri} title={subPage?.title}/>
                 <main>
                     {children}
                 </main>

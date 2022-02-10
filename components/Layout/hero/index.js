@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { Arrow } from "../../icons";
 
-const Hero = ( { hero, page, title } ) => {
+const Hero = ( { hero, page, title, name } ) => {
     return (
         <div className="layout hero-grid">
             {page == '/' ? (

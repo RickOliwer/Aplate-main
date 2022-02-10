@@ -5,7 +5,8 @@ import { GET_SUB_PAGE } from "../src/queries/sub-pages/get-page";
 import { GET_SUB_PAGES_URI } from "../src/queries/sub-pages/get-pages";
 import Blocks from "../components/blocks";
 import { FALLBACK, handleRedirectsAndReturnData, isCustomPageUri } from "../src/utils/slug";
-const Page = ( { data } ) => {
+import { GET_CATERING } from "../src/queries/posts/get-post";
+const Page = ( { data, response } ) => {
     const router = useRouter()
 
     if(router.isFallback){
@@ -13,7 +14,7 @@ const Page = ( { data } ) => {
     }
     return (
         <>
-            <Blocks blocks={data?.subPage?.Gql_pageContent} />
+            <Blocks blocks={data?.subPage?.Gql_pageContent} post={response?.data?.cateringPosts} tax={response?.data?.category} />
         </>
     );
 }
@@ -24,18 +25,23 @@ export async function getStaticProps( { params } ) {
     const { data, errors } = await Client.query( {
         query: GET_SUB_PAGE,
         variables: {
-            uri: params?.slug.join( '/' ),
+            uri: params?.slug,
         },
 
     } );
 
+    const response = await Client.query({
+        query: GET_CATERING,
+    })
+
     const defaultProps = {
         props: {
             data: data || {},
+            response: response || {},
         },
         revalidate: 1,
     }
-
+    console.log('my data', data);
     return handleRedirectsAndReturnData( defaultProps, data, errors, 'subPage')
 }
 
@@ -57,7 +63,7 @@ export async function getStaticPaths() {
     })
 
     return {
-        paths: pathsData,
+        paths: pathsData || [],
         fallback: FALLBACK
     }
 }
