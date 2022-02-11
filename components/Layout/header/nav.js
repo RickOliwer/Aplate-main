@@ -1,6 +1,7 @@
 import isEmpty from 'lodash.isempty';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import 'tailwindcss/tailwind.css'
 import Dropdown from './dropdown';
@@ -9,6 +10,13 @@ const Nav = ({ header, headerMenus }) => {
     const [isDropdownIndex, setDropDownIndex] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const [ isMenuScroll, setMenuScroll ] = useState(false)
+    const router = useRouter()
+    console.log('router', router);
+    useEffect(() => {
+            setDropDownIndex(false)
+            setIsOpen(false)
+
+    }, [router.asPath])
 
     useEffect(() => {
         const handleScroll = () => {

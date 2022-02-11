@@ -1,10 +1,13 @@
 import isEmpty from "lodash.isempty";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import { Arrow } from "../../icons";
 
 const Hero = ( { hero, page, title, name } ) => {
+    const router = useRouter()
+    const theRout = router?.query?.slug
     return (
         <div className="layout hero-grid">
             {page == '/' ? (
@@ -56,7 +59,12 @@ const Hero = ( { hero, page, title, name } ) => {
                     if (index === 6){
                         return (
                             <div key={img?.bild?.id} className="relative hero-img bg-aplate-rost">
-                                <h1 className="text-2xl dead-center text-aplate-white lg:text-4xl md:text-2xl">{title}</h1>
+                                {!isEmpty(title) ? (
+
+                                    <h1 className="text-2xl dead-center text-aplate-white lg:text-4xl md:text-2xl">{title}</h1>
+                                ) : (
+                                    <h1 className="text-2xl dead-center text-aplate-white lg:text-4xl md:text-2xl">{theRout}</h1>
+                                )}
                             </div>
                         )
                     }
