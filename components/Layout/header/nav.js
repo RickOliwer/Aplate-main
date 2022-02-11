@@ -11,7 +11,6 @@ const Nav = ({ header, headerMenus }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [ isMenuScroll, setMenuScroll ] = useState(false)
     const router = useRouter()
-    console.log('router', router);
     useEffect(() => {
             setDropDownIndex(false)
             setIsOpen(false)

@@ -62,8 +62,8 @@ export async function getStaticPaths() {
     const pathsData = [];
 
     data?.cateringPages?.nodes && data?.cateringPages?.nodes.map( page => {
-        page?.children?.nodes?.map(child => {
-            console.log(child);
+        data?.cateringPages?.nodes && page?.children?.nodes?.map(child => {
+            console.log('my child', child);
             if(! isEmpty( child?.uri)){
                     pathsData.push( { params: { slug: child.slug } } )
                 

@@ -27,7 +27,6 @@ const Blog = ( {content, post, tax}) => {
                                 </li>
                             )}
                             {tax.nodes.map((button) =>{
-                                console.log('the button',);
                                 if(theRout === button.slug && !isEmpty(button?.children?.nodes)){
                                     return button?.children?.nodes?.map((child) =>{
                                         return (
@@ -102,7 +101,6 @@ export const Card = ( { cardContent } ) => {
 }
 
 export const TopTax = ({category}) => {
-    console.log('tax', category);
     return (
         <div className="category_card">
             

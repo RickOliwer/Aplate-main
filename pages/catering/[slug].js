@@ -14,7 +14,6 @@ const CateringPage = ({ data, response, tax }) => {
     if(router.isFallback){
         return <div>Loading...</div>
     }
-    console.log('the tax', tax);
     return (
         <>
             <Blocks blocks={response?.data?.subPage?.Gql_pageContent} data={data} post={tax?.data?.cateringPosts} tax={tax?.data?.category} />
