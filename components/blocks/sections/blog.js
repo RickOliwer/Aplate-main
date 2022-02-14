@@ -7,6 +7,8 @@ import { useState } from "react";
 const Blog = ( {content, post, tax}) => {
     const router = useRouter()
     const theRout = router?.query?.slug.toString()
+    const routArr = router?.asPath?.split('/')
+    const popArray = routArr?.pop()
     
     const posts = [];
     post?.edges?.map((post) => {
@@ -69,7 +71,7 @@ const Blog = ( {content, post, tax}) => {
                                     const postCategories = item?.gQLCateringKategorier?.nodes?.map((i) => {
                                         return i.slug
                                     })
-                                    if(postCategories.includes(theRout)){
+                                    if(postCategories.includes(popArray)){
                                         
                                         return true
                                     } else {

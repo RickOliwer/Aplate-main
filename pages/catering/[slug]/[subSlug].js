@@ -1,5 +1,6 @@
 import isEmpty from "lodash.isempty";
 import { useRouter } from "next/router";
+import Blocks from "../../../components/blocks";
 import Client from "../../../src/apollo/client";
 import { GET_CATERING } from "../../../src/queries/posts/get-post";
 import { GET_CATERING_TAX } from "../../../src/queries/sub-pages/get-catering";
@@ -13,7 +14,6 @@ const SubCateringPage = ({ data, response, tax }) => {
     if(router.isFallback){
         return <div>Loading...</div>
     }
-    console.log('the tax', tax);
     return (
         <>
             <Blocks blocks={response?.data?.subPage?.Gql_pageContent} data={data} post={tax?.data?.cateringPosts} tax={tax?.data?.category} />
@@ -63,9 +63,12 @@ export async function getStaticPaths() {
 
     data?.cateringPages?.nodes && data?.cateringPages?.nodes.map( page => {
         data?.cateringPages?.nodes && page?.children?.nodes?.map(child => {
-            console.log('my child', child);
             if(! isEmpty( child?.uri)){
-                    pathsData.push( { params: { slug: child.slug } } )
+                    pathsData.push( { params: {
+                        slug: page.slug,
+                        subSlug: child.slug
+                    } 
+                    } )
                 
             }
         })

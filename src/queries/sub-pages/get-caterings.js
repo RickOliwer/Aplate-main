@@ -13,6 +13,7 @@ query GET_CATERING_TAX_URI {
             id
             name
             uri
+            slug
           }
         }
       }
