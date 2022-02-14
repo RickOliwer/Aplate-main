@@ -5,19 +5,20 @@ import Seo from "../seo";
 import Footer from "./footer";
 import Header from "./header";
 import Hero from "./hero";
+import staticHeader from "../../data/header-static.json"
+import staticFooter from "../../data/footer-static.json"
 
 const Layout = ({children, data}) => {
-
     if(isEmpty(data?.page || data?.subPage || data?.cateringPage)){
         return null
     }
     
-    const {page, subPage, cateringPage, header, headerMenus, HeroImage, footerMenus} = data || {};
+    const {page, subPage, HeroImage} = data || {};
     return (
         <div>
             <Seo seo={page?.seo || subPage?.seo} uri={page?.uri || subPage?.uri} />
             <Head>
-            <link rel="shortcut icon" href={ header?.favicon } />
+            <link rel="shortcut icon" href={ staticHeader?.header?.favicon } />
                 {page?.seo?.schemaDetails || subPage?.seo?.schemaDetails && (
                     <script 
                         type='application/ld+json'
@@ -29,12 +30,12 @@ const Layout = ({children, data}) => {
                 )}
                 
             </Head>
-            <Header header={header} headerMenus={headerMenus?.edges} page={page} />
-            <Hero hero={HeroImage?.hero?.sektion[0]} page={page?.uri} title={subPage?.title}/>
+            <Header header={staticHeader?.header} headerMenus={staticHeader?.headerMenues?.edges} page={page} />
+            <Hero hero={HeroImage?.hero?.sektion[0]} title={subPage?.title}/>
                 <main>
                     {children}
                 </main>
-            <Footer footerMenus={footerMenus} />
+            <Footer footerMenus={staticFooter?.footerMenus} />
         </div>
     );
 }

@@ -15,6 +15,48 @@ query GET_SUB_PAGE($uri: String) {
         }
         Gql_pageContent {
             sektion {
+                ... on Page_GqlPagecontent_Sektion_InfoSektion {
+                    fieldGroupName
+                    rubrik1
+                    rubrik2
+                    text
+                    avslut
+                    knapp {
+                      text
+                      url {
+                        ... on Post {
+                          id
+                          slug
+                          uri
+                        }
+                        ... on Page {
+                          id
+                          slug
+                          uri
+                        }
+                        ... on GQLCatering {
+                          id
+                          slug
+                          uri
+                        }
+                      }
+                    }
+                    installningar {
+                      galleri
+                      galleriHoger
+                      oregelbundetGalleri
+                    }
+                    galleri {
+                      altText
+                      id
+                      mediaItemUrl
+                    }
+                    bild {
+                      altText
+                      id
+                      mediaItemUrl
+                    }
+                  }
             ... on Page_GqlPagecontent_Sektion_Blurbs {
                 fieldGroupName
                 blurb {

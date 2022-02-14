@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useRef } from "react";
 import { Arrow } from "../../icons";
 
-const Hero = ( { hero, page, title, name } ) => {
+const Hero = ( { hero, title } ) => {
     const router = useRouter()
     const theRout = router?.query?.slug
     return (
         <div className="layout hero-grid">
-            {page == '/' ? (
+            {router?.pathname == '/' ? (
                 hero?.bilder?.map((img) => {
                     if(isEmpty(img?.knapp) && img?.installning == 'Bild'){
                         return (

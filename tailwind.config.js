@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
+          '40vh': '40vh',
           '50vh': '50vh',
           '55vh': '55vh',
           '60vh': '60vh',
@@ -22,7 +23,8 @@ module.exports = {
           rost: '#8E443D',
           white: '#ffffff',
           black: '#0C0C0C',
-          green: '#0f4127cc'
+          green: '#0f4127cc',
+          price: '#0F4127'
         },
         capace: {
           oranges: '#FF752E', 

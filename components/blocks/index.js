@@ -39,6 +39,9 @@ export const Block = ( { section, post, tax } ) => {
         case "Page_GqlPagecontent_Sektion_CateringBlog":
             return <Blog content={section} post={post} tax={tax} />
             break;
+        case "Page_GqlPagecontent_Sektion_InfoSektion":
+            return <InfoSection content={section} />
+            break;
         default:
             return <div>{section.fieldGroupName}</div>;
             break;

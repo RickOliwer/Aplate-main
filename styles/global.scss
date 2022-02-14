@@ -12,10 +12,10 @@ body{
 }
 .hero-link{
     transition: ease-in-out .4s;
-    .icon-hover > path{
-        transition: ease-in-out .4s;
-        transform: translateX(-10px);
-    }
+        .icon-hover > path{
+            transition: ease-in-out .4s;
+            transform: translateX(-10px);
+        }
         &:hover {
             color: $rost;
 
@@ -127,3 +127,4 @@ p, .urbanist{
 @import 'blocks/jumbotron';
 @import 'blocks/infoSection';
 @import 'blocks/imageLink';
+@import 'blocks/blog';

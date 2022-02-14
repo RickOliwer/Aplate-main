@@ -1,21 +1,27 @@
 import isEmpty from "lodash.isempty";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Jumbotron = ( { content } ) => {
-
+    const router = useRouter()
     return (
-        <div className="relative jumbotron layout-top">
-            <Image 
-                layout="fill"
-                objectFit="cover"
-                alt={content?.bild?.altText}
-                src={content?.bild?.mediaItemUrl}
-            />
-            
-            <JumboContent content={content} />
-        </div>
+        <>
+        {router?.pathname === "/catering/[slug]" || router?.pathname === "/catering/[slug]/[subSlug]" ? null : (
+
+            <div className="relative jumbotron layout-top">
+                <Image 
+                    layout="fill"
+                    objectFit="cover"
+                    alt={content?.bild?.altText}
+                    src={content?.bild?.mediaItemUrl}
+                />
+                
+                <JumboContent content={content} />
+            </div>
+        )}
+        </>
     );
 }
  
