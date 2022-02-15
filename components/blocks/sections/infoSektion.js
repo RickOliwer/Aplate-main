@@ -1,13 +1,11 @@
 import isEmpty from "lodash.isempty";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ArrowBlack } from "../../icons";
 
 const InfoSection = ( { content } ) => {
     const [isReverse, setReverse] = useState(null)
-    const router = useRouter()
     useEffect(() =>{
         if(content?.installningar?.galleriHoger == true ){
             setReverse(true)
@@ -15,7 +13,6 @@ const InfoSection = ( { content } ) => {
     }, [content?.installningar?.galleriHoger, setReverse])
     return (
         <>
-        {router?.pathname === "/catering/[slug]" || router?.pathname === "/catering/[slug]/[subSlug]" ? null : (
 
             <div className={`layout layout-top grid md:grid-cols-2 md:gap-32 gap-20 info_section ${isReverse ? 'reverse' : ''}`}>
                 <div className="a">
@@ -50,7 +47,7 @@ const InfoSection = ( { content } ) => {
                     </div>
                 </div>
             </div>
-        )}
+
         </>
     );
 }

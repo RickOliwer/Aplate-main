@@ -1,7 +1,13 @@
+
+
+
 .blog-container{
 
         .blog-nav{
-
+            ul{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
                 .blog-link{
                     
                         a{
@@ -24,6 +30,45 @@
                             }
                         }
                 }
+            }
+        }
+
+
+        .card-container{
+
+                .card-grid{
+                    display: grid;
+                    gap: 4rem;
+
+                    .grid-item{
+                        min-height: 40vh;
+                    }
+                }
+        }
+}
+
+@media screen and (min-width: 760px) {
+    .blog-container{
+        .blog-nav{
+            ul{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .blog-container{
+
+        .blog-nav{
+            ul{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
         }
 
 
@@ -33,6 +78,10 @@
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     gap: 4rem;
+
+                    .form-item{
+                        grid-column: span 2;
+                    }
 
                     &:nth-child(even){
                         .grid-item{
@@ -67,3 +116,5 @@
                 }
         }
 }
+}
+

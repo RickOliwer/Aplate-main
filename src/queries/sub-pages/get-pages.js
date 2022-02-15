@@ -6,6 +6,14 @@ query GET_SUB_PAGES_URI {
         nodes {
             id
             uri
+            slug
+            children {
+                nodes {
+                  id
+                  uri
+                  slug
+                }
+              }
         }
     }
 }`

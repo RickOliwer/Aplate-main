@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 import Blocks from "../../../components/blocks";
 import Client from "../../../src/apollo/client";
 import { GET_CATERING } from "../../../src/queries/posts/get-post";
+import { GET_BLOCKS } from "../../../src/queries/sub-pages/get-blocks";
 import { GET_CATERING_TAX } from "../../../src/queries/sub-pages/get-catering";
 import { GET_CATERING_TAX_URI } from "../../../src/queries/sub-pages/get-caterings";
-import { GET_SUB_PAGE } from "../../../src/queries/sub-pages/get-page";
 import { FALLBACK, handleRedirectsAndReturnData } from "../../../src/utils/slug";
 
 const SubCateringPage = ({ data, response, tax }) => {
@@ -33,7 +33,7 @@ export async function getStaticProps( { params } ) {
     } );
 
     const response = await Client.query( {
-        query: GET_SUB_PAGE,
+        query: GET_BLOCKS,
         variables: {
             uri: "/catering/"
         }

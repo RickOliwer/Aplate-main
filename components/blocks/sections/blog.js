@@ -24,7 +24,7 @@ const Blog = ( {content, post, tax}) => {
             {content?.blog === true ? (
                 <div className="layout layout-top blog-container">
                     <div className="py-10 border-b blog-nav">
-                        <ul className="flex flex-wrap items-center justify-between">
+                        <ul className="">
                             {theRout === 'catering' ? null : (
                                 <li className="hover:text-aplate-rost blog-link" key="the-back123">
                                     <Link scroll={false} href="/catering/">
@@ -142,10 +142,10 @@ export const Card = ( { cardContent } ) => {
                 })}
                 {cardContent?.GQL_cateringContent?.sektion?.map((price, index) =>{
                     return (
-                        <div key={`${price?.prisperson?.pris}${index}`} className="flex justify-between mt-28">
+                        <div key={`${price?.prisperson?.pris}${index}`} className="lg:flex lg:justify-between lg:mt-28">
                             <div>
                                 <p className="font-semibold text-aplate-price">Pris: {price?.prisperson?.pris}</p>
-                                <p className="text-sm font-light">{price?.prisperson?.antal}</p>
+                                <p className="mb-4 text-sm font-light">{price?.prisperson?.antal}</p>
                             </div>
                             <div>
                                 <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
@@ -155,7 +155,7 @@ export const Card = ( { cardContent } ) => {
                 })}
             </div>
 
-            <div className={`col-span-2 ${isForm ? 'block' : 'hidden'}`}>
+            <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
                 <Form subject={cardContent?.title} />
             </div>
         </div>

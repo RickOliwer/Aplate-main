@@ -41,7 +41,6 @@ export async function getStaticProps( { params } ) {
         },
         revalidate: 1,
     }
-    console.log('my data', data);
     return handleRedirectsAndReturnData( defaultProps, data, errors, 'subPage')
 }
 

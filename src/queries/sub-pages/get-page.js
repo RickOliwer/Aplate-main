@@ -15,6 +15,33 @@ query GET_SUB_PAGE($uri: String) {
         }
         Gql_pageContent {
             sektion {
+              ... on Page_GqlPagecontent_Sektion_Tjanster {
+                fieldGroupName
+                tjanst {
+                  rubrik1
+                  rubrik2
+                  text
+                  avslut
+                  bild {
+                    altText
+                    id
+                    mediaItemUrl
+                  }
+                }
+              }
+              ... on Page_GqlPagecontent_Sektion_Menyer {
+                fieldGroupName
+                meny {
+                  dag
+                  maltider {
+                    maltid
+                  }
+                }
+                alltidHosAplate {
+                  maltid
+                }
+                bokaBord
+              }
               ... on Page_GqlPagecontent_Sektion_VanligaFragor {
                 fieldGroupName
                 rubrik1
@@ -25,6 +52,7 @@ query GET_SUB_PAGE($uri: String) {
                   knapp {
                     text
                     url {
+                      
                       ... on Post {
                         id
                         uri
