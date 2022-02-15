@@ -1,5 +1,6 @@
 import Blog from "./sections/blog";
 import Blurb from "./sections/blurb";
+import Faq from "./sections/faq";
 import ImageLink from "./sections/imageLink";
 import InfoSection from "./sections/infoSektion";
 import Jumbotron from "./sections/jumbotron";
@@ -41,6 +42,9 @@ export const Block = ( { section, post, tax } ) => {
             break;
         case "Page_GqlPagecontent_Sektion_InfoSektion":
             return <InfoSection content={section} />
+            break;
+        case "Page_GqlPagecontent_Sektion_VanligaFragor":
+            return <Faq content={section} />
             break;
         default:
             return <div>{section.fieldGroupName}</div>;

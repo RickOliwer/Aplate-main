@@ -12,6 +12,9 @@ body{
 }
 .hero-link{
     transition: ease-in-out .4s;
+        a{
+            font-family: 'Urbanist-Italic', sans-serif;
+        }
         .icon-hover > path{
             transition: ease-in-out .4s;
             transform: translateX(-10px);

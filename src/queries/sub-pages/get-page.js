@@ -15,6 +15,32 @@ query GET_SUB_PAGE($uri: String) {
         }
         Gql_pageContent {
             sektion {
+              ... on Page_GqlPagecontent_Sektion_VanligaFragor {
+                fieldGroupName
+                rubrik1
+                rubrik2
+                fraga {
+                  rubrik
+                  text
+                  knapp {
+                    text
+                    url {
+                      ... on Post {
+                        id
+                        uri
+                      }
+                      ... on Page {
+                        id
+                        uri
+                      }
+                      ... on GQLCatering {
+                        id
+                        uri
+                      }
+                    }
+                  }
+                }
+              }
                 ... on Page_GqlPagecontent_Sektion_InfoSektion {
                     fieldGroupName
                     rubrik1
