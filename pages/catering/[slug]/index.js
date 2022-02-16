@@ -67,7 +67,6 @@ export async function getStaticPaths() {
             
         }
     })
-    console.log('paths data', pathsData);
     return {
         paths: pathsData,
         fallback: FALLBACK

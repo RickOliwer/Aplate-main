@@ -38,10 +38,21 @@ export default Blurb;
 export const TheBlurb = ( { b } ) => {
     return (
         <div className="items-center px-10 pb-10 text-center blurbs">
-            <div className='flex justify-center mb-4 mr-0'>{getIconComponentByName(b?.symbol)}</div>
+            {!isEmpty(b?.symbol) && (
+                <div className='flex justify-center mb-4 mr-0'>{getIconComponentByName(b?.symbol)}</div>
+            )}
             <h3 className='mb-1 text-2xl' dangerouslySetInnerHTML={{ __html: sanitize(b?.rubrik) }} />
+
+            {!isEmpty(b?.utdrag) && (
+
+                <p className='mb-6 font-normal' dangerouslySetInnerHTML={{ __html: sanitize(b?.utdrag) }} />
+            )}
             <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.text) }} />
             <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.avslut) }} />
+            {!isEmpty(b?.avslut2) && (
+
+                <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.avslut2) }} />
+            )}
 
             {! isEmpty(b?.knapp?.url?.uri) ? (
 

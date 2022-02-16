@@ -17,6 +17,9 @@ query GET_SUB_PAGE($uri: String) {
             sektion {
               ... on Page_GqlPagecontent_Sektion_Tjanster {
                 fieldGroupName
+                installning {
+                  bildHoger
+                }
                 tjanst {
                   rubrik1
                   rubrik2
@@ -116,8 +119,10 @@ query GET_SUB_PAGE($uri: String) {
                 blurb {
                 symbol
                 rubrik
+                utdrag
                 text
                 avslut
+                avslut2
                 }
             }
             ... on Page_GqlPagecontent_Sektion_Jumbotron {

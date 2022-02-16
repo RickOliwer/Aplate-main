@@ -5,44 +5,87 @@ import Form from "./form";
 
 const Service = ( { content } ) => {
     const [isForm, setForm] = useState(false)
-    console.log('serv',content);
     return (
         <div className="layout layout-top">
             <div className="">
-                {content?.tjanst?.map((service) => {
-                    return (
-                        <div key={service?.bild?.id}>
-                            <div className="grid-2">
-                                <div className="relative w-full">
-                                    <Image 
-                                        layout="fill"
-                                        objectFit="cover"
-                                        alt={service?.bild?.altText}
-                                        src={service?.bild?.mediaItemUrl}
-                                        priority
-                                    />
-                                </div>
-                                <div className="py-40">
-                                    <h3>{service?.rubrik1}</h3>
-                                    <h2>{service?.rubrik2}</h2>
-                                    <p>{service?.text}</p>
-                                    {isEmpty(service?.avslut) ? null : (
-                                        <p>{service?.avslut}</p>
-                                    )}
-                                    <div>
-                                        <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
-                                <Form subject={`${service?.rubrik1} ${service?.rubrik2}`} />
-                            </div>
-                        </div>
-                    )
-                })}
+                {content?.installning?.bildHoger === true ? (
+                    content?.tjanst?.map((service) => {
+                        return <ServiceCardRight key={service?.bild?.id} isForm={isForm} setForm={setForm} service={service} />
+                    })
+                ) : (
+                    content?.tjanst?.map((service) => {
+                        return <ServiceCard key={service?.bild?.id} isForm={isForm} setForm={setForm} service={service} />
+                    })
+                )}
             </div>
         </div>
     );
 }
  
 export default Service;
+
+export const ServiceCard = ( { service, isForm, setForm } ) => {
+    return (
+        <div className="service-card" >
+                            
+            <div className="relative w-full service-item service-img">
+                <Image 
+                    layout="fill"
+                    objectFit="cover"
+                    alt={service?.bild?.altText}
+                    src={service?.bild?.mediaItemUrl}
+                    priority
+                />
+            </div>
+
+            <div className="pt-16 md:py-40 service-item">
+                <h3 className="">{service?.rubrik1}</h3>
+                <h2 className="mb-4 text-xl md:text-2xl">{service?.rubrik2}</h2>
+                <p className="mb-8">{service?.text}</p>
+                {isEmpty(service?.avslut) ? null : (
+                    <p>{service?.avslut}</p>
+                )}
+                <div>
+                    <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
+                </div>
+            </div>
+
+            <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
+                <Form subject={`${service?.rubrik1} ${service?.rubrik2}`} />
+            </div>
+        </div>
+    )
+}
+
+export const ServiceCardRight = ( { service, isForm, setForm } ) => {
+    return (
+        <div className="service-card" >
+                            
+            <div className="relative w-full service-item-right service-img">
+                <Image 
+                    layout="fill"
+                    objectFit="cover"
+                    alt={service?.bild?.altText}
+                    src={service?.bild?.mediaItemUrl}
+                    priority
+                />
+            </div>
+
+            <div className="pt-16 md:py-40 service-item-right">
+                <h3 className="">{service?.rubrik1}</h3>
+                <h2 className="mb-4 text-xl md:text-2xl">{service?.rubrik2}</h2>
+                <p className="mb-8">{service?.text}</p>
+                {isEmpty(service?.avslut) ? null : (
+                    <p>{service?.avslut}</p>
+                )}
+                <div>
+                    <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
+                </div>
+            </div>
+
+            <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
+                <Form subject={`${service?.rubrik1} ${service?.rubrik2}`} />
+            </div>
+        </div>
+    )
+}

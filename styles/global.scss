@@ -94,6 +94,11 @@ p, .urbanist{
     font-family: 'Urbanist', sans-serif;
 }
 
+.urbanist-italic{
+    font-family: 'Urbanist-Italic', sans-serif;
+
+}
+
 .aplate-bg{
     background-color: $black;
 }
@@ -131,3 +136,4 @@ p, .urbanist{
 @import 'blocks/infoSection';
 @import 'blocks/imageLink';
 @import 'blocks/blog';
+@import 'blocks/service';

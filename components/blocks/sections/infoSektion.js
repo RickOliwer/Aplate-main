@@ -33,16 +33,18 @@ const InfoSection = ( { content } ) => {
                         {!isEmpty(content?.avslut) && (
                             <p className="mt-4 text-lg font-light">{content?.avslut}</p>
                         )}
-                        
-                        <div className="mt-6 info-link text-aplate-black">
+                        {isEmpty(content?.knapp?.url?.uri) ? null : (
+                            
+                            <div className="mt-6 info-link text-aplate-black">
 
-                            <Link href={content?.knapp?.url?.uri}>
-                                <a>
-                                    {content?.knapp?.text}
-                                </a>
-                            </Link>
-                            <ArrowBlack className="ml-5 icon-hover" />
-                        </div>
+                                <Link href={content?.knapp?.url?.uri}>
+                                    <a>
+                                        {content?.knapp?.text}
+                                    </a>
+                                </Link>
+                                <ArrowBlack className="ml-5 icon-hover" />
+                            </div>
+                        )}
 
                     </div>
                 </div>

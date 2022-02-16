@@ -108,7 +108,7 @@ export const Card = ( { cardContent } ) => {
     const [isForm, setForm] = useState(false)
     return (
         <div className="my-16 card-grid">
-            <div className="relative w-full h-full grid-item">
+            <div className="relative w-full h-full grid-item service-img">
                 {isEmpty(cardContent?.featuredImage?.node) ? null : (
 
                     <Image 
