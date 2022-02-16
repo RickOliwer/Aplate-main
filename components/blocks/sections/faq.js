@@ -1,3 +1,4 @@
+import isEmpty from "lodash.isempty";
 import Link from "next/link";
 import { ArrowBlack } from "../../icons";
 
@@ -14,12 +15,16 @@ const Faq = ( { content } ) => {
                         <div key={`${faq?.knapp?.url?.id}${faq?.rubrik}`} className="px-6 py-6 border border-aplate-black">
                             <h3 className="mb-3 text-xl lg:text-2xl">{faq?.rubrik}</h3>
                             <p className="pr-20 pb-36">{faq?.text}</p>
-                            <div className="flex items-baseline justify-end hero-link text-aplate-black">
-                                <Link href={faq?.knapp?.url?.uri}>
-                                    <a>{faq?.knapp?.text}</a>
-                                </Link>
-                                <ArrowBlack className="ml-5 icon-hover" />
-                            </div>
+
+                            {!isEmpty(faq?.knapp?.url?.uri) && (
+
+                                <div className="flex items-baseline justify-end hero-link text-aplate-black">
+                                    <Link href={faq?.knapp?.url?.uri}>
+                                        <a>{faq?.knapp?.text}</a>
+                                    </Link>
+                                    <ArrowBlack className="ml-5 icon-hover" />
+                                </div>
+                            )}
                         </div>
                     )
                 })}

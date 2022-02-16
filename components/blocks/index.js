@@ -7,6 +7,7 @@ import InfoSection from "./sections/infoSektion";
 import Jumbotron from "./sections/jumbotron";
 import Menu from "./sections/menu";
 import Service from "./sections/service";
+import Textarea from "./sections/textarea";
 
 const Blocks = ( { blocks, post, tax, subBlock } ) => {
     return (
@@ -59,6 +60,9 @@ export const Block = ( { section, post, tax } ) => {
             break;
         case "Page_GqlPagecontent_Sektion_Tjanster":
             return <Service content={section} />
+            break;
+        case "Page_GqlPagecontent_Sektion_RubrikTexter":
+            return <Textarea content={section} />
             break;
         default:
             return <div>{section.fieldGroupName}</div>;

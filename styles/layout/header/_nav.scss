@@ -49,7 +49,7 @@
                             transform: translateX(-50%);
                             text-align: right;
                             padding: 17px;
-                            //width: 180px;
+                            //width: 280px;
                             display: flex;
                             flex-direction: column;
                             opacity: 0;
@@ -179,16 +179,23 @@
 }
 
 @keyframes dropDownShow{
-    from{
+    0%{
         
+        display: none;
         opacity: 0;
-        width: 100px;
+        
         height: auto;
     }
-    to{
+    40%{
+        display: block;
+        opacity: 0;
+        width: 150px;
+        height: auto;
+    }
+    100%{
         
         opacity: 1;
-        width: 180px;
+        width: 200px;
     }
 }
 

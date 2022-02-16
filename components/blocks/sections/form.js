@@ -30,7 +30,7 @@ const Form = ( {subject} ) => {
     }
     return (
         <div>
-                <h4 className="mb-2 text-xl">Gör en förfrågan på {subject}.</h4>
+                <h4 className="mb-2 text-xl">Gör en förfrågan på <span className="text-aplate-price">{subject}.</span></h4>
                 <p className="mb-6">Använd formuläret nedan eller kontakta oss på info@aplate.se eller på 0709 - 99 91 83.</p>
                 <form action="" className="" onSubmit={handleSubmit(onSubmitForm)}>
                     {isSubmitted ? (

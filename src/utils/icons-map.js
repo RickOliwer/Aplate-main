@@ -5,6 +5,7 @@ export const getIconComponentByName = ( name ) => {
         catering: SvgIconsComponent.Catering,
         cocktailglas: SvgIconsComponent.Cocktailglas,
         talrik: SvgIconsComponent.Talrik,
+        logo: SvgIconsComponent.FooterLogoMax,
     }
 
     if( name in ComponentsMap ) {

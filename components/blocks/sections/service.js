@@ -38,12 +38,26 @@ export const ServiceCard = ( { service, isForm, setForm } ) => {
                 />
             </div>
 
-            <div className="pt-16 md:py-40 service-item">
+            <div className="flex flex-col justify-center lg:pr-56 service-item">
                 <h3 className="">{service?.rubrik1}</h3>
                 <h2 className="mb-4 text-xl md:text-2xl">{service?.rubrik2}</h2>
-                <p className="mb-8">{service?.text}</p>
+                {!isEmpty(service?.text) && (
+                    <p className="mb-8">{service?.text}</p>
+                )}
+                {!isEmpty(service?.lista) && (
+                    <ul className="mb-4">
+                        {service?.lista?.map((li) => {
+                            return (
+                                <li className="font-light" key={li?.text}>{li?.text}</li>
+                            )
+                        })}
+                    </ul>
+                )}
                 {isEmpty(service?.avslut) ? null : (
                     <p>{service?.avslut}</p>
+                )}
+                {!isEmpty(service?.avslutItalic) && (
+                    <p className="mb-20 urbanist-italic">{service?.avslutItalic}</p>
                 )}
                 <div>
                     <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
@@ -51,7 +65,11 @@ export const ServiceCard = ( { service, isForm, setForm } ) => {
             </div>
 
             <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
-                <Form subject={`${service?.rubrik1} ${service?.rubrik2}`} />
+                <Form subject={isEmpty(service?.tjanst) ? (
+                    service?.rubrik1 + service?.rubrik2
+                ) : (
+                    service?.tjanst
+                )} />
             </div>
         </div>
     )
@@ -71,12 +89,27 @@ export const ServiceCardRight = ( { service, isForm, setForm } ) => {
                 />
             </div>
 
-            <div className="pt-16 md:py-40 service-item-right">
+            <div className="flex flex-col justify-center lg:pr-56 service-item-right">
                 <h3 className="">{service?.rubrik1}</h3>
                 <h2 className="mb-4 text-xl md:text-2xl">{service?.rubrik2}</h2>
-                <p className="mb-8">{service?.text}</p>
+                {!isEmpty(service?.text) && (
+                    <p className="mb-8">{service?.text}</p>
+                )}
+
+                {!isEmpty(service?.lista) && (
+                    <ul className="mb-4">
+                        {service?.lista?.map((li) => {
+                            return (
+                                <li className="font-light" key={li?.text}>{li?.text}</li>
+                            )
+                        })}
+                    </ul>
+                )}
                 {isEmpty(service?.avslut) ? null : (
                     <p>{service?.avslut}</p>
+                )}
+                {!isEmpty(service?.avslutItalic) && (
+                    <p className="mb-20 urbanist-italic">{service?.avslutItalic}</p>
                 )}
                 <div>
                     <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
@@ -84,7 +117,11 @@ export const ServiceCardRight = ( { service, isForm, setForm } ) => {
             </div>
 
             <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
-                <Form subject={`${service?.rubrik1} ${service?.rubrik2}`} />
+                <Form subject={isEmpty(service?.tjanst) ? (
+                        service?.rubrik1 + service?.rubrik2
+                    ) : (
+                        service?.tjanst
+                    )} />
             </div>
         </div>
     )

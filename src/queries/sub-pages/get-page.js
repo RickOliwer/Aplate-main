@@ -15,16 +15,30 @@ query GET_SUB_PAGE($uri: String) {
         }
         Gql_pageContent {
             sektion {
+              ... on Page_GqlPagecontent_Sektion_RubrikTexter {
+                fieldGroupName
+                rubrikText {
+                  rubrik
+                  textstycken {
+                    text
+                  }
+                }
+              }
               ... on Page_GqlPagecontent_Sektion_Tjanster {
                 fieldGroupName
                 installning {
                   bildHoger
                 }
                 tjanst {
+                  tjanst
                   rubrik1
                   rubrik2
                   text
                   avslut
+                  lista {
+                    text
+                  }
+                  avslutItalic
                   bild {
                     altText
                     id
@@ -120,6 +134,9 @@ query GET_SUB_PAGE($uri: String) {
                 symbol
                 rubrik
                 utdrag
+                textstycken {
+                  text
+                }
                 text
                 avslut
                 avslut2
