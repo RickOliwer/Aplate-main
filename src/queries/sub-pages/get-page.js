@@ -24,6 +24,19 @@ query GET_SUB_PAGE($uri: String) {
                   }
                 }
               }
+              ... on Page_GqlPagecontent_Sektion_VaraReferenser {
+                fieldGroupName
+                referens {
+                  rubrik
+                  text
+                  namn
+                  bild {
+                    altText
+                    id
+                    mediaItemUrl
+                  }
+                }
+              }
               ... on Page_GqlPagecontent_Sektion_Tjanster {
                 fieldGroupName
                 installning {

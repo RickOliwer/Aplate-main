@@ -36,7 +36,6 @@ const Blurb = ( { content } ) => {
 export default Blurb;
 
 export const TheBlurb = ( { b } ) => {
-    console.log('the b', b);
     return (
         <div className="items-center px-10 pb-10 text-center blurbs">
             {!isEmpty(b?.symbol) && (
@@ -49,9 +48,9 @@ export const TheBlurb = ( { b } ) => {
                 <p className='mb-6 text-lg font-normal' dangerouslySetInnerHTML={{ __html: sanitize(b?.utdrag) }} />
             )}
             {!isEmpty(b?.textstycken) && (
-                b?.textstycken?.map((text) => {
+                b?.textstycken?.map((text, index) => {
                     return (
-                    <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(text?.text) }} />
+                    <p key={`${text}${index}4!%(5)`} className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(text?.text) }} />
 
                     )
                 })

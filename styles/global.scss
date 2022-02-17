@@ -5,7 +5,7 @@ $black: #0C0C0C;
 $green: #0f4127cc;
 $elite: 'Special Elite', cursive;
 body{
-    overflow-x: hidden !important;
+    //overflow-x: hidden !important;
 }
 .icons{
     margin: 0 !important;
@@ -137,3 +137,4 @@ p, .urbanist{
 @import 'blocks/imageLink';
 @import 'blocks/blog';
 @import 'blocks/service';
+@import 'blocks/image-slider';

@@ -3,6 +3,8 @@ import Blog from "./sections/blog";
 import Blurb from "./sections/blurb";
 import Faq from "./sections/faq";
 import ImageLink from "./sections/imageLink";
+import ImageSliderCopy from "./sections/imgSlider-copy";
+import ImageSlider from "./sections/imgSlider";
 import InfoSection from "./sections/infoSektion";
 import Jumbotron from "./sections/jumbotron";
 import Menu from "./sections/menu";
@@ -64,6 +66,8 @@ export const Block = ( { section, post, tax } ) => {
         case "Page_GqlPagecontent_Sektion_RubrikTexter":
             return <Textarea content={section} />
             break;
+        case "Page_GqlPagecontent_Sektion_VaraReferenser":
+            return <ImageSliderCopy content={section} />
         default:
             return <div>{section.fieldGroupName}</div>;
             break;
