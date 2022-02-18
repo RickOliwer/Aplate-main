@@ -42,44 +42,47 @@ const Form = ( {subject} ) => {
                             required: "Required",
                         })}
                     />
-                    <div className="grid grid-cols-2 gap-8">
-                        <div className="col-span-2 md:col-span-1">
+                    <div className="grid grid-cols-2 gap-8 input_container">
+                        <div className="col-span-2 md:col-span-1 ">
+                            <div className="input_border">
+                                <span className="border_text">Namn</span>
 
-                            <input 
-                                type="text" 
-                                placeholder="Namn" 
-                                name="namn"
-                                {...register("namn", {
-                                    required: {
-                                        value: true,
-                                        message: 'Obligatoriskt',
-                                    },
-                                    minLength: {
-                                        value: 2,
-                                        message: 'Namnet är för kort',
-                                    },
-                                    maxLength: {
-                                        value: 15,
-                                        message: "Namnet är för långt",
-                                    },
-                                    pattern: {
-                                        value: /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
-                                        message: "Symboler som 123-#€&%/ är inte tillåtet"
-                                    }
-                                })}  
-                                className="w-full col-span-2 p-4 border md:col-span-1 border-aplate-black"
-                            />
+                                <input 
+                                    type="text"
+                                    name="namn"
+                                    {...register("namn", {
+                                        required: {
+                                            value: true,
+                                            message: 'Obligatoriskt',
+                                        },
+                                        minLength: {
+                                            value: 2,
+                                            message: 'Namnet är för kort',
+                                        },
+                                        maxLength: {
+                                            value: 15,
+                                            message: "Namnet är för långt",
+                                        },
+                                        pattern: {
+                                            value: /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
+                                            message: "Symboler som 123-#€&%/ är inte tillåtet"
+                                        }
+                                    })}  
+                                    className="w-full col-span-2 p-4 md:col-span-1"
+                                />
+                            </div>
                             {errors.namn ? (
                             <span className="text-aplate-rost">{errors.namn.message}</span>
                             ) : null}
                         </div>
                         <div className="col-span-2 md:col-span-1">
+                        <div className="input_border">
+                            <span className="border_text">Telefon</span>
 
                             <input 
-                                type="text" 
-                                placeholder="Telefon" 
+                                type="text"
                                 name="telefon" 
-                                className="w-full col-span-2 p-4 border md:col-span-1 border-aplate-black"
+                                className="w-full col-span-2 p-4 md:col-span-1"
                                 {...register("telefon", {
                                     minLength: {
                                         value: 10,
@@ -95,73 +98,85 @@ const Form = ( {subject} ) => {
                                     }
                                 })} 
                             />
-                            {errors.telefon ? (
-                                <span className="text-capace-oranges">{errors.telefon.message}</span>
-                            ) : null}
                         </div>
+                        {errors.telefon ? (
+                            <span className="text-aplate-rost">{errors.telefon.message}</span>
+                        ) : null}
+
+                        </div>
+
                         <div className="col-span-2 md:col-span-1">
 
-                            <input 
-                                type="email" 
-                                placeholder="E-post" 
-                                name="email" 
-                                className="w-full col-span-2 p-4 border md:col-span-1 border-aplate-black"
-                                {...register("email", {
-                                    required: {
-                                        value: true,
-                                        message: 'Obligatoriskt',
-                                    },
-                                    minLength: {
-                                        value: 10,
-                                        message: 'E-mailet är för kort',
-                                    },
-                                    pattern: {
-                                        value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                                        message: "exemple@exemple.test"
-                                    }
-                                })}  
-                            />
+                            <div className="input_border">
+                                <span className="border_text">E&minus;mail</span>
+
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    className="w-full col-span-2 p-4 md:col-span-1"
+                                    {...register("email", {
+                                        required: {
+                                            value: true,
+                                            message: 'Obligatoriskt',
+                                        },
+                                        minLength: {
+                                            value: 10,
+                                            message: 'E-mailet är för kort',
+                                        },
+                                        pattern: {
+                                            value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                                            message: "exemple@exemple.test"
+                                        }
+                                    })}  
+                                />
+                            </div>
                             {errors.email ? (
                                 <span className="text-aplate-rost">{errors.email.message}</span>
                             ) : null}
                         </div>
+
                         <div className="col-span-2 md:col-span-1">
 
-                            <input 
-                                type="number" 
-                                placeholder="Antal personer" 
-                                name="antal" 
-                                className="w-full col-span-2 p-4 border md:col-span-1 border-aplate-black"
-                                {...register("antal", {
-                                    required: {
-                                        value: true,
-                                        message: 'Obligatoriskt',
-                                    },
-                                    
-                                })}
-                            />
+                            <div className="input_border">
+                                <span className="border_text">Antal&nbsp;personer</span>
+
+                                <input 
+                                    type="number" 
+                                    name="antal" 
+                                    className="w-full col-span-2 p-4 md:col-span-1"
+                                    {...register("antal", {
+                                        required: {
+                                            value: true,
+                                            message: 'Obligatoriskt',
+                                        },
+                                        
+                                    })}
+                                />
+                            </div>
                             {errors.antal ? (
                                 <span className="text-aplate-rost">{errors.antal.message}</span>
                             ) : null}
                         </div>
-                        <div className="col-span-2">
 
-                            <input 
-                                type="textarea" 
-                                placeholder="Meddelande (frivilligt)" 
-                                name="meddelande" 
-                                className="w-full p-4 border border-aplate-black h-52"
-                                {...register("meddelande", {
-                                    minLength: {
-                                        value: 0,
-                                        message: 'meddelandet är för kort',
-                                    },
-                                    maxLength: {
-                                        value: 350,
-                                        message: "meddelandet är för långt",
-                                    },
-                                })} 
-                            />
+                        <div className="col-span-2">
+                            <div className="texteara_border">
+                                <span className="border_text">Meddelande&nbsp;&#40;frivilligt&#41;</span>
+                                <textarea 
+                                    type="textarea"  
+                                    name="meddelande" 
+                                    className="w-full p-4 h-52"
+                                    {...register("meddelande", {
+                                        minLength: {
+                                            value: 0,
+                                            message: 'meddelandet är för kort',
+                                        },
+                                        maxLength: {
+                                            value: 350,
+                                            message: "meddelandet är för långt",
+                                        },
+                                    })} 
+                                />
+                            </div>
                             {errors.meddelande ? (
                                 <span className="text-capace-oranges">{errors.meddelande.message}</span>
                             ) : null}

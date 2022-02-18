@@ -1,7 +1,8 @@
 .input_container{
 
 
-        .input_border{
+        .input_border, .texteara_border{
+
             border-width: 0 1px 1px 1px;
             border-color: $black;
             border-style: solid;
@@ -21,6 +22,9 @@
                 }
         }
 
+        
+        
+
 
 }
 
@@ -39,5 +43,23 @@
     background: #333;
     display: block;
     width: 90%;
+    margin-left: 10px;
+}
+
+.texteara_border span:before{
+    content: ' ';
+    height: 1px;
+    background: #333;
+    display: block;
+    width: 5%;
+    margin-right: 10px;
+}
+
+.texteara_border span:after {
+    content: ' ';
+    height: 1px;
+    background: #333;
+    display: block;
+    width: 95%;
     margin-left: 10px;
 }

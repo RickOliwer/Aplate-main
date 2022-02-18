@@ -173,6 +173,8 @@ export const TheForm = ({ register, handleSubmit, reset, errors, isSubmitted, se
                     type="textarea"
                     name="meddelande" 
                     className="w-full p-4 h-52"
+                    rows="4"
+                    cols="50"
                     {...register("meddelande", {
                         minLength: {
                             value: 0,
