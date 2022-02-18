@@ -12,9 +12,12 @@ const Faq = ( { content } ) => {
             <div className="grid-3">
                 {content?.fraga?.map((faq) => {
                     return (
-                        <div key={`${faq?.knapp?.url?.id}${faq?.rubrik}`} className="px-6 py-6 border border-aplate-black">
-                            <h3 className="mb-3 text-xl lg:text-2xl">{faq?.rubrik}</h3>
-                            <p className="pr-20 pb-36">{faq?.text}</p>
+                        <div key={`${faq?.knapp?.url?.id}${faq?.rubrik}`} className="flex flex-col justify-between px-6 py-6 border border-aplate-black">
+                            <div>
+
+                                <h3 className="mb-3 text-xl lg:text-2xl">{faq?.rubrik}</h3>
+                                <p className="pr-20 pb-36">{faq?.text}</p>
+                            </div>
 
                             {!isEmpty(faq?.knapp?.url?.uri) && (
 

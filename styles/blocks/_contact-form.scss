@@ -1,0 +1,43 @@
+.input_container{
+
+
+        .input_border{
+            border-width: 0 1px 1px 1px;
+            border-color: $black;
+            border-style: solid;
+            position: relative;
+
+            textarea:focus, input:focus{
+                outline: none;
+            }
+
+                .border_text{
+                    position: absolute;
+                    display: flex;
+                    right: 0;
+                    left: 0;
+                    align-items: center;
+                    top: -11.5px;
+                }
+        }
+
+
+}
+
+.input_border span:before{
+    content: ' ';
+    height: 1px;
+    background: #333;
+    display: block;
+    width: 10%;
+    margin-right: 10px;
+}
+
+.input_border span:after {
+    content: ' ';
+    height: 1px;
+    background: #333;
+    display: block;
+    width: 90%;
+    margin-left: 10px;
+}

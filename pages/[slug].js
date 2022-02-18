@@ -6,6 +6,7 @@ import { GET_SUB_PAGES_URI } from "../src/queries/sub-pages/get-pages";
 import Blocks from "../components/blocks";
 import { FALLBACK, handleRedirectsAndReturnData, isCustomPageUri } from "../src/utils/slug";
 import { GET_CATERING } from "../src/queries/posts/get-post";
+import ContactForm from "../components/blocks/sections/contact-form";
 const Page = ( { data, response } ) => {
     const router = useRouter()
 
@@ -15,6 +16,10 @@ const Page = ( { data, response } ) => {
     return (
         <>
             <Blocks blocks={data?.subPage?.Gql_pageContent} post={response?.data?.cateringPosts} tax={response?.data?.category} />
+
+            {router.asPath === '/kontakt' && (
+                <ContactForm />
+            )}
         </>
     );
 }

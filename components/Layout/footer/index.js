@@ -4,10 +4,10 @@ import * as SvgsComp from '../../icons'
 
 const Footer = ( { footerMenus } ) => {
     return (
-        <footer className="layout layout-top aplate-bg text-white">
+        <footer className="text-center md:text-left layout layout-top aplate-bg text-aplate-white">
             {/* widgets */}
-            <div className="footer_container grid-4 py-16 ">
-                <div className="">
+            <div className="py-16 footer_container grid-4 ">
+                <div className="flex justify-center">
                     <SvgsComp.FooterLogo />
                 </div>
                 <div className="">
@@ -31,23 +31,31 @@ const Footer = ( { footerMenus } ) => {
                 </div>
                 <div className="">
                     <h2 className='mb-4 text-xl'>Följ oss.</h2>
-                    <div className='flex mb-20 justify-between'>
-                        <Link href="https://www.facebook.com/">
-                            <a className=''>
-                                <SvgsComp.Facebook />
-                            </a>
-                        </Link>
+                    <div className='grid grid-cols-3 mb-20'>
+                        <div className='flex justify-center md:justify-start'>
 
-                        <Link href="https://instagram.com/">
-                            <a>
-                                <SvgsComp.Instagram />
-                            </a>
-                        </Link>
-                        <Link href="https://se.linkedin.com/">
-                            <a>
-                                <SvgsComp.Linkedin />
-                            </a>
-                        </Link>
+                            <Link href="https://www.facebook.com/">
+                                <a className='inline-block'>
+                                    <SvgsComp.Facebook />
+                                </a>
+                            </Link>
+                        </div>
+                        <div className='flex justify-center md:justify-start'>
+
+                            <Link href="https://instagram.com/">
+                                <a className='inline-block'>
+                                    <SvgsComp.Instagram />
+                                </a>
+                            </Link>
+                        </div>
+                        <div className='flex justify-center md:justify-start'>
+
+                            <Link href="https://se.linkedin.com/">
+                                <a className='inline-block'>
+                                    <SvgsComp.Linkedin />
+                                </a>
+                            </Link>
+                        </div>
                         
                         
                         
@@ -70,8 +78,8 @@ const Footer = ( { footerMenus } ) => {
                 </div>
             </div>
 
-            <div className='py-8 flex justify-between text-sm'>
-                <p>Copyright © Aplate Nordic 2021</p>
+            <div className='flex flex-col justify-between pb-8 text-sm md:py-8 md:flex-row'>
+                <p className='mb-4 md:mb-0'>Copyright © Aplate Nordic 2021</p>
                 <p>Byggd med <span className='text-capace-oranges'>♥</span> av Capace Media</p>
             </div>
         </footer>

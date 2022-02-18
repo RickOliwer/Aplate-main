@@ -37,7 +37,7 @@ export default Blurb;
 
 export const TheBlurb = ( { b } ) => {
     return (
-        <div className="items-center px-10 pb-10 text-center blurbs">
+        <div className="items-center pb-10 text-center md:px-10 blurbs">
             {!isEmpty(b?.symbol) && (
                 <div className='flex justify-center mb-4 mr-0'>{getIconComponentByName(b?.symbol)}</div>
             )}

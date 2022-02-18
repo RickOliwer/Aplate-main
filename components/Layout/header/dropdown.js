@@ -25,7 +25,7 @@ const Dropdown = ( { kids, label, index, is, set } ) => {
 
             <div ref={dropItems} className={`dropdown ${is === index ? 'show' : ''}`}>
                 {kids?.map((child) =>{
-                    return <Link scroll={false} key={child?.node?.id}  href={child?.node?.path}>
+                    return <Link key={child?.node?.id}  href={child?.node?.path}>
                                 <a className="drop-item">{child?.node?.label}</a>
                             </Link>
                 })}

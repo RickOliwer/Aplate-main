@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { LeftImageSlider, Line, RightImageSlider } from "../../icons";
 
 const ImageSliderCopy = ( { content } ) => {
-    const [isCurrent, setCurrent] = useState(1)
     const refLength = content?.referens.length
-
+    const [isCurrent, setCurrent] = useState(Math.round(refLength / 2) - 1)
+    const slider = useRef()
     const links = useRef([])
     const createLinksRefs = (link, index) => {
         links.current[index] = link;
     }
-
+    
     useEffect(() => {
         links.current.map((dot, index) => {
             if(isCurrent === index){
@@ -20,6 +20,8 @@ const ImageSliderCopy = ( { content } ) => {
                 dot.style.backgroundColor = ""
             }
         })
+
+
     }, [isCurrent])
 
     const nextSlide = () => {
@@ -37,7 +39,7 @@ const ImageSliderCopy = ( { content } ) => {
         <section className="slider-container layout layout-top">
             <h2 className="mb-5 text-xl">Våra referenser</h2>
             {!isEmpty(content?.referens) && (
-                <section className="slider">
+                <section ref={slider} className="slider">
 
                     <button className="left-arrow" onClick={prevSlide}><LeftImageSlider /></button>
                     <button className="right-arrow" onClick={nextSlide}><RightImageSlider /></button>

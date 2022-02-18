@@ -43,7 +43,7 @@ const Form = ( {subject} ) => {
                         })}
                     />
                     <div className="grid grid-cols-2 gap-8">
-                        <div className="">
+                        <div className="col-span-2 md:col-span-1">
 
                             <input 
                                 type="text" 
@@ -73,7 +73,7 @@ const Form = ( {subject} ) => {
                             <span className="text-aplate-rost">{errors.namn.message}</span>
                             ) : null}
                         </div>
-                        <div className="">
+                        <div className="col-span-2 md:col-span-1">
 
                             <input 
                                 type="text" 
@@ -99,7 +99,7 @@ const Form = ( {subject} ) => {
                                 <span className="text-capace-oranges">{errors.telefon.message}</span>
                             ) : null}
                         </div>
-                        <div className="">
+                        <div className="col-span-2 md:col-span-1">
 
                             <input 
                                 type="email" 
@@ -125,7 +125,7 @@ const Form = ( {subject} ) => {
                                 <span className="text-aplate-rost">{errors.email.message}</span>
                             ) : null}
                         </div>
-                        <div className="">
+                        <div className="col-span-2 md:col-span-1">
 
                             <input 
                                 type="number" 

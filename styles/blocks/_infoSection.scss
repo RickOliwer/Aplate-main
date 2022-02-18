@@ -1,9 +1,4 @@
-    .reverse{
-        &> .b{
-            grid-column-start: 1;
-            grid-row-start: 1;
-        }
-    }
+
 
     .info_section{
 
@@ -95,4 +90,13 @@
                                 }
                     }
             }
+    }
+
+    @media screen and (min-width: 760px) {
+        .reverse{
+            &> .b{
+                grid-column-start: 1;
+                grid-row-start: 1;
+            }
+        }
     }

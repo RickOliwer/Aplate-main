@@ -61,22 +61,22 @@ export const InfoJumboContent = ( { content } ) => {
         }
     }, [left, setContentLeft])
     return (
-        <div className={`z-10 w-11/12 text-aplate-white ${isContentLeft ? 'absolute flex flex-col top-0 p-8 lg:p-20 md:p-16 left-0 h-full md:w-2/4 w-full justify-between' : 'dead-center  text-center'}`}>
+        <div className={`z-10 w-11/12 text-aplate-white ${isContentLeft ? 'absolute flex flex-col p-8 top-0 left-0 lg:p-20 md:pb-16 h-full md:w-2/4 w-full justify-between' : 'dead-center  text-center'}`}>
             <div>
 
                 <h2 className="w-full mb-2 text-2xl lg:text-5xl md:text-4xl">{content?.rubrik}</h2>
                 {!isEmpty(content?.utdrag) && (
-                    <p className="text-lg lg:pr-36">{content?.utdrag}</p>
+                    <p className="text-base md:text-lg lg:pr-10">{content?.utdrag}</p>
                 )}
                 {!isEmpty(content?.kontakt?.eMail) && (
 
-                    <div className="flex mt-16 mb-6 text-lg lg:pr-36">
+                    <div className="flex mt-16 mb-6 text-base md:text-lg lg:pr-10">
                         <p className="flex mr-10 text-center align-center"><Mail className="my-auto mr-3" />{content?.kontakt?.eMail}</p>
                         <p className="flex text-center align-center"><Phone className="my-auto mr-3" />{content?.kontakt?.telefon}</p>
                     </div>
                 )}
-                <p className={`text-lg lg:pr-36 ${isContentLeft ? 'text-lg lg:pr-36 mb-6' : 'm-auto w-2/4 mb-12'}`}>{content?.text}</p>
-                <p className="text-lg lg:pr-36">{content?.avslut}</p>
+                <p className={`text-base md:text-lg lg:pr-10 ${isContentLeft ? 'text-lg lg:pr-10 mb-6' : 'm-auto w-2/4 mb-12'}`}>{content?.text}</p>
+                <p className="text-base md:text-lg lg:pr-10">{content?.avslut}</p>
 
                 {!isEmpty(content?.lista) && (
                     <ul className="">
