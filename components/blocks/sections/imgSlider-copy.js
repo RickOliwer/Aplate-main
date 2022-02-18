@@ -41,8 +41,8 @@ const ImageSliderCopy = ( { content } ) => {
             {!isEmpty(content?.referens) && (
                 <section ref={slider} className="slider">
 
-                    <button className="left-arrow" onClick={prevSlide}><LeftImageSlider /></button>
-                    <button className="right-arrow" onClick={nextSlide}><RightImageSlider /></button>
+                    <button className="hidden left-arrow md:block" onClick={prevSlide}><LeftImageSlider /></button>
+                    <button className="hidden right-arrow md:block" onClick={nextSlide}><RightImageSlider /></button>
                    { content?.referens?.map((slide, index) => {
                         return (
 
@@ -61,11 +61,17 @@ const ImageSliderCopy = ( { content } ) => {
                                             priority
                                             className="img"
                                         />
-                                        <div className="absolute z-10 w-3/6 p-20 top-2/4 -translate-y-2/4 text-aplate-white">
-                                            <h3 className="mb-4 text-2xl">{slide?.rubrik}</h3>
-                                            <p className="mb-24 text-lg">{slide?.text}</p>
-                                            <p className=""><span className="mr-5"><Line /></span>{slide?.namn}</p>
+                                        <div className="absolute left-0 z-10 w-full h-full p-10 md:p-20 md:w-3/6 top-2/4 -translate-y-2/4 text-aplate-white">
+                                            <h3 className="mb-4 text-xl md:text-3xl">{slide?.rubrik}</h3>
+                                            <p className="mb-24 text-sm md:text-lg">{slide?.text}</p>
+                                            <div className="flex items-center">
+                                                <Line className="mr-8" />
+                                                <p className="text-sm">{slide?.namn}</p>
+                                            </div>
                                         </div>
+
+                                        <div className="absolute top-0 left-0 z-20 block w-2/4 h-full md:hidden" onClick={prevSlide}></div>
+                                        <div className="absolute top-0 right-0 z-20 block w-2/4 h-full md:hidden" onClick={nextSlide}></div>
                                     </div>
                                 
                             

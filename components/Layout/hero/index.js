@@ -61,9 +61,9 @@ const Hero = ( { hero, title } ) => {
                             <div key={img?.bild?.id} className="relative hero-img bg-aplate-rost">
                                 {!isEmpty(title) ? (
 
-                                    <h1 className="text-2xl dead-center text-aplate-white lg:text-4xl md:text-2xl">{title}</h1>
+                                    <h1 className="w-4/5 text-2xl text-center dead-center text-aplate-white lg:text-4xl md:text-2xl">{title}</h1>
                                 ) : (
-                                    <h1 className="text-2xl dead-center text-aplate-white lg:text-4xl md:text-2xl">{theRout}</h1>
+                                    <h1 className="w-4/5 text-2xl text-center dead-center text-aplate-white lg:text-4xl md:text-2xl">{theRout}</h1>
                                 )}
                             </div>
                         )
