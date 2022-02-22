@@ -1,31 +1,34 @@
 import axios from "axios";
+import isEmpty from "lodash.isempty";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
+    
     const {register, handleSubmit, reset, formState: { errors }} = useForm()
     const [isSubmitted, setSubmitted] = useState(false)
 
     async function onSubmitForm(values){
         console.log('you got mail', values);
-        // let config = {
-        //     method: 'post',
-        //     url: `${process.env.NEXT_PUBLIC_API_URL}`,
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     data: values,
-        // }
+        let config = {
+            method: 'post',
+            url: `${process.env.NEXT_PUBLIC_API_URL}`,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: values,
+        }
 
-        // try {
-        //     const response = await axios(config);
-        //     if(response.status == 200){
-        //         //setSubmitted(isSubmitted)
-        //         console.log(response);
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        try {
+            const response = await axios(config);
+            if(response.status == 200){
+                setSubmitted(true)
+                reset()
+            }
+        } catch (error) {
+            console.log(error);
+        }
         
     }
     return (
@@ -71,14 +74,27 @@ const ContactForm = () => {
 }
 
 export const TheForm = ({ register, handleSubmit, reset, errors, isSubmitted, setSubmitted, onSubmitForm }) => {
+    const router = useRouter()
     return (
         <form action="" className="" onSubmit={handleSubmit(onSubmitForm)}>
-        {isSubmitted ? (
-            <div className="w-full px-6 py-10 my-4 text-xl text-aplate-white bg-aplate-rost">Meddelande har skickats</div>
+        {isSubmitted && isEmpty(errors)  ? (
+            <div className="w-full px-6 py-4 my-4 text-xl opacity-50 text-aplate-white bg-aplate-rost">Meddelande har skickats</div>
         ) : null}
-        <input type="text" defaultValue="yey" hidden
+        <input type="text" defaultValue="komma i kontakt med oss" hidden
             name="subject"
             {...register("subject", {
+                required: "Required",
+            })}
+        />
+        <input type="text" defaultValue="Kontaktformulär" hidden
+            name="heading"
+            {...register("heading", {
+                required: "Required",
+            })}
+        />
+        <input type="text" defaultValue={router.asPath} hidden
+            name="url"
+            {...register("url", {
                 required: "Required",
             })}
         />
@@ -169,7 +185,7 @@ export const TheForm = ({ register, handleSubmit, reset, errors, isSubmitted, se
             <section className="col-span-2 input_border">
                 <span className="border_text">Meddelande</span>
 
-                <input 
+                <textarea 
                     type="textarea"
                     name="meddelande" 
                     className="w-full p-4 h-52"
@@ -181,7 +197,7 @@ export const TheForm = ({ register, handleSubmit, reset, errors, isSubmitted, se
                             message: 'meddelandet är för kort',
                         },
                         maxLength: {
-                            value: 350,
+                            value: 950,
                             message: "meddelandet är för långt",
                         },
                     })} 
@@ -198,7 +214,6 @@ export const TheForm = ({ register, handleSubmit, reset, errors, isSubmitted, se
                 name="submit"
                 className="w-full py-3 mt-8 transition duration-500 ease-in-out rounded cursor-pointer hover:scale-105 special-elite px-14 bg-aplate-rost text-aplate-white"
                 value="Skicka"
-                onClick={() => setSubmitted(!isSubmitted)}
             />
 
         </div>

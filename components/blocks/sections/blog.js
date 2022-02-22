@@ -2,8 +2,8 @@ import isEmpty from "lodash.isempty";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { ArrowBlack } from "../../icons";
+import { useEffect, useRef, useState } from "react";
+import { ArrowBlack, Left, Right } from "../../icons";
 import Form from "./form";
 
 const Blog = ( {content, post, tax}) => {
@@ -18,42 +18,103 @@ const Blog = ( {content, post, tax}) => {
     })
     const [isMenuItem, setMenuItem] = useState(posts)
     const [isActiveFilter, setActiveFilter] = useState('')
-    const [isNav, setNav] = useState(false)
+    const [isOverflow, setOverflow] = useState(false)
+    const [isScrollLeft, setScrollLeft] = useState(true)
+    const [isScrollRight, setScrollRight] = useState(false)
+
+    const refLength = useRef()
+    const refScroll = useRef()
+
+    useEffect(() => {
+        if(refLength?.current?.offsetWidth < refLength?.current?.scrollWidth){
+             setOverflow(true)
+         } else {
+            setOverflow(false)
+         }
+    }, [refLength, setOverflow])
+
+    useEffect(() => {
+        
+
+        window.addEventListener('resize', () => {
+            if(refLength?.current?.offsetWidth < refLength?.current?.scrollWidth){
+                setOverflow(true)
+            } else {
+                setOverflow(false)
+            }
+        })
+
+    }, [refLength, setOverflow])
+
+    useEffect(() => {
+        refScroll.current.addEventListener('scroll', () => {
+
+            if(refScroll?.current?.scrollLeft <= 0){
+                setScrollLeft(true)
+            }else if(refScroll?.current?.scrollLeft > 0) {
+                setScrollLeft(false)
+            }
+            if(refLength?.current?.offsetWidth + refScroll?.current?.scrollLeft >= refLength?.current?.scrollWidth){
+                setScrollRight(true)
+            } else if (refLength?.current?.offsetWidth + refScroll?.current?.scrollLeft < refLength?.current?.scrollWidth){
+                setScrollRight(false)
+            }
+        })
+    }, [refScroll, refLength, setScrollRight])
+
+    const scrollRight = () => {
+        refScroll?.current?.scrollLeft += 200;
+    }
+    const scrollLeft = () => {
+        refScroll?.current?.scrollLeft -= 200;
+    }
+    //console.log('hmm ? =>', refLength.current);
     return (
         <>
             {content?.blog === true ? (
                 <div className="layout layout-top blog-container">
-                    <div className="py-10 border-b blog-nav">
-                        <ul className="">
-                            {theRout === 'catering' ? null : (
-                                <li className="hover:text-aplate-rost blog-link" key="the-back123">
-                                    <Link scroll={false} href="/catering/">
-                                        <a>
-                                            <ArrowBlack className="rotate-180 icon-hover"/>
-                                        </a>
-                                    </Link>
-                                </li>
-                            )}
-                            {tax.nodes.map((button) =>{
-                                if(theRout === button.slug && !isEmpty(button?.children?.nodes)){
-                                    return button?.children?.nodes?.map((child) =>{
+                    <div className="relative px-3 py-10 border-b blog-nav">
+                        <div className="ul-container" ref={refScroll}>
+
+                            
+                            <ul className="" ref={refLength}>
+                                {theRout === 'catering' ? null : (
+                                    <li className="hover:text-aplate-rost blog-link" key="the-back123">
+                                        <Link scroll={false} href="/catering/">
+                                            <a>
+                                                <ArrowBlack className="rotate-180 icon-hover"/>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                )}
+                                {tax.nodes.map((button) =>{
+                                    if(theRout === button.slug && !isEmpty(button?.children?.nodes)){
+                                        return button?.children?.nodes?.map((child) =>{
+                                            return (
+                                                <li className={`hover:text-aplate-price active:text-aplate-price ${router.asPath + '/' === child?.uri ? 'clicked' : ''}`} key={child?.slug}>
+                                                    <Link scroll={false} href={child?.uri}><a>{child?.name}</a></Link>
+                                                    <div className={`w-0 bg-aplate-green `}></div>
+                                                </li>
+                                            )
+                                        })
+                                    } else if (theRout === 'catering'){
+
                                         return (
-                                            <li className="hover:text-aplate-price active:text-aplate-price" key={child?.slug}>
-                                                <Link scroll={false} href={child?.uri}><a>{child?.name}</a></Link>
+                                            <li className="hover:text-aplate-price active:text-aplate-price" key={button?.slug}>
+                                                <Link scroll={false} href={button?.uri}><a>{button?.name}</a></Link>
+                                                <div className="w-0 bg-aplate-green"></div>
                                             </li>
                                         )
-                                    })
-                                } else if (theRout === 'catering'){
+                                    } 
+                                    
+                                })}
+                            </ul>
+                        </div>
+                        <Left onClick={scrollLeft} className={`absolute top-2/4 -translate-y-2/4 left-0 bg-aplate-white cat-button ${isOverflow ? 'block' : 'hidden'} ${isScrollLeft ? 'hidden' : 'block'}`} />
+                        <Right onClick={scrollRight} className={`absolute top-2/4 -translate-y-2/4 right-0 bg-aplate-white cat-button ${isOverflow ? 'block' : 'hidden'} ${isScrollRight ? 'hidden' : 'block'}`} />
+                        {/* <button onClick={scrollRight} className={`absolute top-2/4 -translate-y-2/4 right-0 bg-aplate-white border cat-button ${isOverflow ? 'block' : 'hidden'}`}>right</button>
 
-                                    return (
-                                        <li className="hover:text-aplate-price active:text-aplate-price" key={button?.slug}>
-                                            <Link scroll={false} href={button?.uri}><a>{button?.name}</a></Link>
-                                        </li>
-                                    )
-                                } 
-                                
-                            })}
-                        </ul>
+                        <button onClick={scrollLeft} className={`absolute top-2/4 -translate-y-2/4 left-0 bg-aplate-white border cat-button ${isOverflow ? 'block' : 'hidden'}`}>left</button> */}
                     </div>
 
                     <div className="card-container">
@@ -156,7 +217,7 @@ export const Card = ( { cardContent } ) => {
             </div>
 
             <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
-                <Form subject={cardContent?.title} />
+                <Form subject={cardContent?.title} heading={`${cardContent?.title}`} />
             </div>
         </div>
     )

@@ -1,31 +1,33 @@
 import axios from "axios";
+import isEmpty from "lodash.isempty";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const Form = ( {subject} ) => {
+const Form = ( {subject, heading} ) => {
+    const router = useRouter()
     const {register, handleSubmit, reset, formState: { errors }} = useForm()
     const [isSubmitted, setSubmitted] = useState(false)
 
     async function onSubmitForm(values){
-        console.log('you got mail', values);
-        // let config = {
-        //     method: 'post',
-        //     url: `${process.env.NEXT_PUBLIC_API_URL}`,
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     data: values,
-        // }
+        let config = {
+            method: 'post',
+            url: `${process.env.NEXT_PUBLIC_API_URL}`,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: values,
+        }
 
-        // try {
-        //     const response = await axios(config);
-        //     if(response.status == 200){
-        //         //setSubmitted(isSubmitted)
-        //         console.log(response);
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        try {
+            const response = await axios(config);
+            if(response.status == 200){
+                setSubmitted(true)
+                reset()
+            }
+        } catch (error) {
+            console.log(error);
+        }
         
     }
     return (
@@ -33,12 +35,24 @@ const Form = ( {subject} ) => {
                 <h4 className="mb-2 text-xl">Gör en förfrågan på <span className="text-aplate-price">{subject}.</span></h4>
                 <p className="mb-6">Använd formuläret nedan eller kontakta oss på info@aplate.se eller på 0709 - 99 91 83.</p>
                 <form action="" className="" onSubmit={handleSubmit(onSubmitForm)}>
-                    {isSubmitted ? (
-                        <div className="w-full px-6 py-10 my-4 text-xl text-aplate-white bg-aplate-rost">Meddelande har skickats</div>
+                    {isSubmitted && isEmpty(errors) ? (
+                        <div className="w-full px-6 py-4 my-4 text-xl opacity-50 text-aplate-white bg-aplate-rost">Meddelande har skickats</div>
                     ) : null}
                     <input type="text" defaultValue={subject} hidden
                         name="subject"
                         {...register("subject", {
+                            required: "Required",
+                        })}
+                    />
+                    <input type="text" defaultValue={heading} hidden
+                        name="heading"
+                        {...register("heading", {
+                            required: "Required",
+                        })}
+                    />
+                    <input type="text" defaultValue={router.asPath} hidden
+                        name="url"
+                        {...register("url", {
                             required: "Required",
                         })}
                     />
@@ -171,14 +185,14 @@ const Form = ( {subject} ) => {
                                             message: 'meddelandet är för kort',
                                         },
                                         maxLength: {
-                                            value: 350,
+                                            value: 950,
                                             message: "meddelandet är för långt",
                                         },
                                     })} 
                                 />
                             </div>
                             {errors.meddelande ? (
-                                <span className="text-capace-oranges">{errors.meddelande.message}</span>
+                                <span className="text-aplate-rost">{errors.meddelande.message}</span>
                             ) : null}
                         </div>
 
@@ -189,7 +203,6 @@ const Form = ( {subject} ) => {
                             name="submit"
                             className="py-3 mt-8 rounded cursor-pointer special-elite px-14 bg-aplate-rost text-aplate-white"
                             value="Skicka"
-                            onClick={() => setSubmitted(!isSubmitted)}
                         />
 
                     </div>

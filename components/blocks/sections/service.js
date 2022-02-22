@@ -65,7 +65,7 @@ export const ServiceCard = ( { service, isForm, setForm } ) => {
             </div>
 
             <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
-                <Form subject={isEmpty(service?.tjanst) ? (
+                <Form heading={`${service?.rubrik1} ${service?.rubrik2}`} subject={isEmpty(service?.tjanst) ? (
                     service?.rubrik1 + service?.rubrik2
                 ) : (
                     service?.tjanst
