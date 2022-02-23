@@ -24,7 +24,7 @@ const Blog = ( {content, post, tax}) => {
     const [isScrollRight, setScrollRight] = useState(false)
 
     const refLength = useRef()
-    const refScroll = useRef()
+    let theScroll = useRef()
 
     useEffect(() => {
         if(refLength?.current?.offsetWidth < refLength?.current?.scrollWidth){
@@ -48,26 +48,31 @@ const Blog = ( {content, post, tax}) => {
     }, [refLength, setOverflow])
 
     useEffect(() => {
-        refScroll.current.addEventListener('scroll', () => {
+        theScroll.current.addEventListener('scroll', () => {
 
-            if(refScroll?.current?.scrollLeft <= 0){
+            if(theScroll?.current?.scrollLeft <= 0){
                 setScrollLeft(true)
-            }else if(refScroll?.current?.scrollLeft > 0) {
+            }else if(theScroll?.current?.scrollLeft > 0) {
                 setScrollLeft(false)
             }
-            if(refLength?.current?.offsetWidth + refScroll?.current?.scrollLeft >= refLength?.current?.scrollWidth){
+            if(refLength?.current?.offsetWidth + theScroll?.current?.scrollLeft >= refLength?.current?.scrollWidth){
                 setScrollRight(true)
-            } else if (refLength?.current?.offsetWidth + refScroll?.current?.scrollLeft < refLength?.current?.scrollWidth){
+            } else if (refLength?.current?.offsetWidth + theScroll?.current?.scrollLeft < refLength?.current?.scrollWidth){
                 setScrollRight(false)
             }
         })
-    }, [refScroll, refLength, setScrollRight])
+    }, [theScroll, refLength, setScrollRight])
 
     const scrollRight = () => {
-        refScroll?.current?.scrollLeft += 200;
+        let scrollright = theScroll?.current?.scrollLeft
+        console.log(theScroll?.current?.scrollLeft);
+        scrollright += 200;
+        theScroll.current.scrollLeft = scrollright
     }
     const scrollLeft = () => {
-        refScroll?.current?.scrollLeft -= 200;
+        let scrollleft = theScroll?.current?.scrollLeft
+        scrollleft -= 200;
+        theScroll.current.scrollLeft = scrollleft
     }
 
     const slug = router.asPath.split('/')
@@ -79,7 +84,7 @@ const Blog = ( {content, post, tax}) => {
             {content?.blog === true ? (
                 <div className="layout layout-top blog-container">
                     <div className="relative px-3 py-10 border-b blog-nav">
-                        <div className="ul-container" ref={refScroll}>
+                        <div className="ul-container" ref={theScroll}>
 
                             
                             <ul className="" ref={refLength}>
@@ -207,11 +212,10 @@ export const Card = ( { cardContent } ) => {
             </div>
             <div className="grid-item">
                 <h4 className="mb-2">{cardContent?.title}</h4>
-                {console.log(cardContent)}
                 {cardContent?.GQL_cateringContent?.sektion?.map((texttext) => {
                    return (
                     
-                    <div className="mb-4 text-sm font-light lg:w-2/4 parsed">{!isEmpty(texttext?.text) && parse(texttext?.text)}</div>
+                    <div key={texttext?.text} className="mb-4 text-sm font-light lg:w-2/4 parsed">{!isEmpty(texttext?.text) && parse(texttext?.text)}</div>
 
                    ) 
 

@@ -17,6 +17,7 @@ query GET_LUNCH_BLOCKS($uri: String) {
                 }
               }
               alltidHosAplate {
+                rubrik
                 maltid
               }
               bokaBord

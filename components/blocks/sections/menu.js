@@ -25,9 +25,9 @@ const Menu = ( { content } ) => {
                         <h2 className="mt-4 mb-6 text-xl lg:mt-0">Veckans á la carte</h2>
                         {content?.alltidHosAplate?.map((always, index) => {
                             return (
-                                <div>
+                                <div key={`${always?.maltid}${index}`}>
                                     <h3 className="mb-2">{always?.rubrik}</h3>
-                                    <p key={`${always?.maltid}${index}`} className="mb-5 font-light">{always?.maltid}</p>
+                                    <p className="mb-5 font-light">{always?.maltid}</p>
                                 </div>
                             )
                         })}
