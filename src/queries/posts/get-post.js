@@ -18,12 +18,7 @@ query GET_CATERING {
             sektion {
               ... on GQLCatering_GqlCateringcontent_Sektion_Menyer {
                 fieldGroupName
-                meny {
-                  textRad1
-                  textRad2
-                  textRad3
-                  text
-                }
+                text
                 prisperson {
                   pris
                   antal

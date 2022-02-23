@@ -22,10 +22,13 @@ const Menu = ( { content } ) => {
                 </div>
                 <div className="flex flex-col justify-between text-center lg:px-12">
                     <div>
-                        <h2 className="mt-4 mb-6 text-xl lg:mt-0">Alltid hos Aplate</h2>
+                        <h2 className="mt-4 mb-6 text-xl lg:mt-0">Veckans á la carte</h2>
                         {content?.alltidHosAplate?.map((always, index) => {
                             return (
-                                <p key={`${always?.maltid}${index}`} className="mb-2 font-light">{always?.maltid}</p>
+                                <div>
+                                    <h3 className="mb-2">{always?.rubrik}</h3>
+                                    <p key={`${always?.maltid}${index}`} className="mb-5 font-light">{always?.maltid}</p>
+                                </div>
                             )
                         })}
                     </div>

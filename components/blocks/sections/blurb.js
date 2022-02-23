@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getIconComponentByName } from '../../../src/utils/icons-map';
 import {sanitize} from '../../../src/utils/miscellaneous'
 import { ArrowBlack } from '../../icons';
+import parse from "html-react-parser"
 
 const Blurb = ( { content } ) => {
     const [isLayoutOne, setLayoutOne] = useState(false)
@@ -43,24 +44,7 @@ export const TheBlurb = ( { b } ) => {
             )}
             <h3 className='mb-1 text-2xl' dangerouslySetInnerHTML={{ __html: sanitize(b?.rubrik) }} />
 
-            {!isEmpty(b?.utdrag) && (
-
-                <p className='mb-6 text-lg font-normal' dangerouslySetInnerHTML={{ __html: sanitize(b?.utdrag) }} />
-            )}
-            {!isEmpty(b?.textstycken) && (
-                b?.textstycken?.map((text, index) => {
-                    return (
-                    <p key={`${text}${index}4!%(5)`} className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(text?.text) }} />
-
-                    )
-                })
-            )}
-            <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.text) }} />
-            <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.avslut) }} />
-            {!isEmpty(b?.avslut2) && (
-
-                <p className='mb-6 font-light' dangerouslySetInnerHTML={{ __html: sanitize(b?.avslut2) }} />
-            )}
+            <div className='mb-6 font-light parsed'>{!isEmpty(b?.text) && parse(b?.text)}</div>
 
             {! isEmpty(b?.knapp?.url?.uri) ? (
 

@@ -71,7 +71,6 @@ query GET_BLOCKS($uri: String) {
                 symbol
                 rubrik
                 text
-                avslut
                 }
             }
             ... on Page_GqlPagecontent_Sektion_CateringBlog {

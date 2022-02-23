@@ -17,12 +17,7 @@ query GET_SUB_PAGE($uri: String) {
             sektion {
               ... on Page_GqlPagecontent_Sektion_RubrikTexter {
                 fieldGroupName
-                rubrikText {
-                  rubrik
-                  textstycken {
-                    text
-                  }
-                }
+                rubrikText
               }
               ... on Page_GqlPagecontent_Sektion_VaraReferenser {
                 fieldGroupName
@@ -68,6 +63,7 @@ query GET_SUB_PAGE($uri: String) {
                   }
                 }
                 alltidHosAplate {
+                  rubrik
                   maltid
                 }
                 bokaBord
@@ -141,13 +137,7 @@ query GET_SUB_PAGE($uri: String) {
                 blurb {
                 symbol
                 rubrik
-                utdrag
-                textstycken {
-                  text
-                }
                 text
-                avslut
-                avslut2
                 }
             }
             ... on Page_GqlPagecontent_Sektion_Jumbotron {

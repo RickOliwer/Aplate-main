@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowBlack, Left, Right } from "../../icons";
 import Form from "./form";
+import parse from "html-react-parser"
 
 const Blog = ( {content, post, tax}) => {
     const router = useRouter()
@@ -205,25 +206,20 @@ export const Card = ( { cardContent } ) => {
                 )}
             </div>
             <div className="grid-item">
-                <h4>{cardContent?.title}</h4>
-                {cardContent?.GQL_cateringContent?.sektion?.map((infos) => {
-                    return infos?.meny?.map((info) => {
-                        if(isEmpty(info?.text)){
-                            return (
-                                <div key={`${info?.textRad1}${info?.textRad2}${info?.textRad3}`} className="mb-4 text-sm font-light ">
-                                    <p>{info?.textRad1}</p>
-                                    <p>{info?.textRad2}</p>
-                                    <p>{info?.textRad3}</p>
-                                </div>
-                            )
-                        } else {
-                            return <p key={info?.text} className="mb-4 text-sm font-light lg:w-2/4">{info?.text}</p>
-                        }
-                        
-                        
-                    })
+                <h4 className="mb-2">{cardContent?.title}</h4>
+                {console.log(cardContent)}
+                {cardContent?.GQL_cateringContent?.sektion?.map((texttext) => {
+                   return (
+                    
+                    <div className="mb-4 text-sm font-light lg:w-2/4 parsed">{!isEmpty(texttext?.text) && parse(texttext?.text)}</div>
+
+                   ) 
 
                 })}
+                        
+                        
+                        
+            
                 {cardContent?.GQL_cateringContent?.sektion?.map((price, index) =>{
                     return (
                         <div key={`${price?.prisperson?.pris}${index}`} className="lg:flex lg:justify-between lg:mt-28">
