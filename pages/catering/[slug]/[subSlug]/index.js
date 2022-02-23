@@ -1,12 +1,12 @@
 import isEmpty from "lodash.isempty";
 import { useRouter } from "next/router";
-import Blocks from "../../../components/blocks";
-import Client from "../../../src/apollo/client";
-import { GET_CATERING } from "../../../src/queries/posts/get-post";
-import { GET_BLOCKS } from "../../../src/queries/sub-pages/get-blocks";
-import { GET_CATERING_TAX } from "../../../src/queries/sub-pages/get-catering";
-import { GET_CATERING_TAX_URI } from "../../../src/queries/sub-pages/get-caterings";
-import { FALLBACK, handleRedirectsAndReturnData } from "../../../src/utils/slug";
+import Blocks from "../../../../components/blocks";
+import Client from "../../../../src/apollo/client";
+import { GET_CATERING } from "../../../../src/queries/posts/get-post";
+import { GET_BLOCKS } from "../../../../src/queries/sub-pages/get-blocks";
+import { GET_CATERING_TAX } from "../../../../src/queries/sub-pages/get-catering";
+import { GET_CATERING_TAX_URI } from "../../../../src/queries/sub-pages/get-caterings";
+import { FALLBACK, handleRedirectsAndReturnData } from "../../../../src/utils/slug";
 
 const SubCateringPage = ({ data, response, tax }) => {
     const router = useRouter()

@@ -107,18 +107,13 @@ query GET_SUB_PAGE($uri: String) {
                     avslut
                     knapp {
                       text
+                      kategoriUrl {
+                        uri
+                        slug
+                        id
+                      }
                       url {
-                        ... on Post {
-                          id
-                          slug
-                          uri
-                        }
                         ... on Page {
-                          id
-                          slug
-                          uri
-                        }
-                        ... on GQLCatering {
                           id
                           slug
                           uri

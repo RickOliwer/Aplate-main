@@ -8,12 +8,20 @@ query GET_CATERING_TAX_URI {
         name
         uri
         slug
-        children {
+        children(where: {parent: 1}) {
           nodes {
             id
             name
             uri
             slug
+            childChild: children {
+              nodes {
+                slug
+                uri
+                id
+                name
+              }
+            }
           }
         }
       }

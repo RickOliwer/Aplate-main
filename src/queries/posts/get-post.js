@@ -55,11 +55,26 @@ query GET_CATERING {
               mediaItemUrl
             }
           }
-        children {
+        children(where: {parent: 1}) {
           nodes {
             name
             slug
             uri
+            childChild: children {
+              nodes {
+                id
+                name
+                slug
+                uri
+                GQL_categoryContent {
+                  featuredImage {
+                    altText
+                    id
+                    mediaItemUrl
+                  }
+                }
+              }
+            }
             GQL_categoryContent {
                 featuredImage {
                   altText

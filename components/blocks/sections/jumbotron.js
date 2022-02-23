@@ -37,7 +37,7 @@ export const JumboContent = ( { content } ) => {
         }
     }, [left, setContentLeft])
     return (
-        <div className={`z-10 w-11/12 text-aplate-white ${isContentLeft ? 'absolute flex flex-col top-0 p-8 lg:p-20 md:p-16 left-0 h-full md:w-3/4 w-full justify-between' : 'dead-center text-center'}`}>
+        <div className={`z-10 w-11/12 text-aplate-white ${isContentLeft ? 'absolute flex flex-col top-2/4 -translate-y-2/4 p-8 max-h-full jumbo-height lg:p-20 md:p-16 left-0 md:w-3/4 w-full justify-between' : 'dead-center text-center'}`}>
             <div>
 
                 <h2 className="w-full mb-4 text-2xl lg:text-5xl md:text-4xl">{content?.rubrik}</h2>
@@ -61,7 +61,7 @@ export const InfoJumboContent = ( { content } ) => {
         }
     }, [left, setContentLeft])
     return (
-        <div className={`z-10 w-11/12 text-aplate-white ${isContentLeft ? 'absolute flex flex-col p-8 top-0 left-0 lg:p-20 md:pb-16 h-full md:w-2/4 w-full justify-between' : 'dead-center  text-center'}`}>
+        <div className={`z-10 w-11/12 text-aplate-white ${isContentLeft ? 'absolute flex flex-col p-8 top-2/4 -translate-y-2/4 left-0 lg:p-20 md:pb-16 max-h-full jumbo-height md:w-2/4 w-full justify-between' : 'dead-center text-center'}`}>
             <div>
 
                 <h2 className="w-full mb-2 text-2xl lg:text-5xl md:text-4xl">{content?.rubrik}</h2>
@@ -89,7 +89,7 @@ export const InfoJumboContent = ( { content } ) => {
                 )}
             </div>
             {!isEmpty(content?.knapp?.url?.uri) ? (
-                <Link href={content?.knapp?.url?.uri}><a className="button">{content?.knapp?.text}</a></Link>
+                <Link href={content?.knapp?.url?.uri}><a className="mt-10 button">{content?.knapp?.text}</a></Link>
             ) : null}
         </div>
     )

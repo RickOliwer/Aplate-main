@@ -10,13 +10,20 @@ query GET_CATERING_TAX($uri: ID!) {
       slug
       uri
       name
-      children {
+      children(where: {parent: 1}) {
         nodes {
           slug
           uri
           id
           name
-          
+          childChild: children {
+            nodes {
+              slug
+              uri
+              id
+              name
+            }
+          }
         }
       }
       gQLCaterings {

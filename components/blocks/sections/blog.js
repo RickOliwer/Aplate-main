@@ -68,7 +68,11 @@ const Blog = ( {content, post, tax}) => {
     const scrollLeft = () => {
         refScroll?.current?.scrollLeft -= 200;
     }
-    //console.log('hmm ? =>', refLength.current);
+
+    const slug = router.asPath.split('/')
+    slug.pop()
+    const slugJoin = slug.join('/')
+
     return (
         <>
             {content?.blog === true ? (
@@ -80,7 +84,7 @@ const Blog = ( {content, post, tax}) => {
                             <ul className="" ref={refLength}>
                                 {theRout === 'catering' ? null : (
                                     <li className="hover:text-aplate-rost blog-link" key="the-back123">
-                                        <Link scroll={false} href="/catering/">
+                                        <Link scroll={false} href={slugJoin}>
                                             <a>
                                                 <ArrowBlack className="rotate-180 icon-hover"/>
                                             </a>
@@ -90,12 +94,31 @@ const Blog = ( {content, post, tax}) => {
                                 {tax.nodes.map((button) =>{
                                     if(theRout === button.slug && !isEmpty(button?.children?.nodes)){
                                         return button?.children?.nodes?.map((child) =>{
-                                            return (
-                                                <li className={`hover:text-aplate-price active:text-aplate-price ${router.asPath + '/' === child?.uri ? 'clicked' : ''}`} key={child?.slug}>
-                                                    <Link scroll={false} href={child?.uri}><a>{child?.name}</a></Link>
-                                                    <div className={`w-0 bg-aplate-green `}></div>
-                                                </li>
-                                            )
+                                            if(router?.query?.subSlug === child?.slug && !isEmpty(child?.childChild?.nodes)){
+                                                return child?.childChild?.nodes?.map((grandkids) => {
+                                                    return (
+                                                        <li 
+                                                            className={`hover:text-aplate-price active:text-aplate-price ${router.asPath + '/' === grandkids?.uri ? 'clicked' : ''}`} key={grandkids?.slug}>
+                                                        
+                                                            <Link 
+                                                                scroll={false} 
+                                                                href={grandkids?.uri}
+                                                            >
+                                                                <a>{grandkids?.name}</a>
+                                                            </Link>
+                                                            <div className={`w-0 bg-aplate-green `}></div>
+                                                        </li>
+                                                    )
+                                                })
+                                            } else if (theRout === button?.slug) {
+
+                                                return (
+                                                    <li className={`hover:text-aplate-price active:text-aplate-price ${router.asPath + '/' === child?.uri ? 'clicked' : ''}`} key={child?.slug}>
+                                                        <Link scroll={false} href={child?.uri}><a>{child?.name}</a></Link>
+                                                        <div className={`w-0 bg-aplate-green `}></div>
+                                                    </li>
+                                                )
+                                            }
                                         })
                                     } else if (theRout === 'catering'){
 
@@ -227,10 +250,12 @@ export const Card = ( { cardContent } ) => {
 export const TopTax = ({category}) => {
     return (
         <div className="category_card">
-            
+
+            {!isEmpty(category?.uri) && (
+
             <Link scroll={false} href={category?.uri}>
                 <a>
-                <div className="relative w-full h-50vh">
+                <div className="relative w-full h-50vh topTax">
                     {isEmpty(category?.GQL_categoryContent?.featuredImage) ? null : (
 
                         <Image 
@@ -246,6 +271,7 @@ export const TopTax = ({category}) => {
                 </div>
                 </a>
             </Link>
+            )}
         
         </div>
     )
