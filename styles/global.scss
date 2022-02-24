@@ -2,6 +2,7 @@
 $rost: #8E443D;
 $white: #ffffff;
 $black: #0C0C0C;
+$strongGreen: #0f4127;
 $green: #0f4127cc;
 $elite: 'Special Elite', cursive;
 body{
@@ -15,6 +16,18 @@ body{
 
     p{
         margin-bottom: 17px;
+
+            a{
+                color: $strongGreen;
+                border-bottom: 2px solid transparent;
+                transition: all ease-in-out .5s;
+
+                &:hover{
+                    border-color: $strongGreen;
+                }
+                    
+               
+            }
     }
 
     h1, h2, h3, h4, h5{

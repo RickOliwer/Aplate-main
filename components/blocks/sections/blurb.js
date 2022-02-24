@@ -4,13 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import { getIconComponentByName } from '../../../src/utils/icons-map';
 import {sanitize} from '../../../src/utils/miscellaneous'
 import { ArrowBlack } from '../../icons';
-import parse from "html-react-parser"
+import handleParse from '../../../src/utils/parse';
 
 const Blurb = ( { content } ) => {
     const [isLayoutOne, setLayoutOne] = useState(false)
     const [isLayoutTwo, setLayoutTwo] = useState(false)
     const layout = useRef()
-
     useEffect(() => {
         if(layout.current.childNodes.length === 1){
             setLayoutOne(true)
@@ -44,7 +43,7 @@ export const TheBlurb = ( { b } ) => {
             )}
             <h3 className='mb-1 text-2xl' dangerouslySetInnerHTML={{ __html: sanitize(b?.rubrik) }} />
 
-            <div className='mb-6 font-light parsed'>{!isEmpty(b?.text) && parse(b?.text)}</div>
+           {handleParse(b?.text)}
 
             {! isEmpty(b?.knapp?.url?.uri) ? (
 
