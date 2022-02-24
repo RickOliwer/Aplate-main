@@ -23,7 +23,7 @@ const Dropdown = ( { kids, label, index, is, set } ) => {
         <div className="dropdown-container">
             <button onClick={() => set(is !== index ? index : false)} className="cursor-pointer special-elite dropdown-button">{label}.</button>
 
-            <div ref={dropItems} className={`dropdown ${is === index ? 'show' : ''}`}>
+            <div ref={dropItems} className={`dropdown z-50 ${is === index ? 'show' : ''}`}>
                 {kids?.map((child) =>{
                     return <Link key={child?.node?.id}  href={child?.node?.path}>
                                 <a className="drop-item">{child?.node?.label}</a>

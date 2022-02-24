@@ -38,7 +38,7 @@ const Nav = ({ header, headerMenus }) => {
 
             <Link href="/">
                 <a>
-                    <div className={`relative logo z-50 ${isMenuScroll ? ' h-12 w-28' : 'md:h-32 md:w-52 h-20 w-36'}`}>
+                    <div className={`relative logo z-40 ${isMenuScroll ? ' h-12 w-28' : 'md:h-32 md:w-52 h-20 w-36'}`}>
 
                         <Image 
                             layout="fill"
