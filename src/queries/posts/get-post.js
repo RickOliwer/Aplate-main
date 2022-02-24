@@ -7,6 +7,7 @@ query GET_CATERING {
         node {
           title
           id
+          slug
           featuredImage {
             node {
               altText
@@ -18,7 +19,9 @@ query GET_CATERING {
             sektion {
               ... on GQLCatering_GqlCateringcontent_Sektion_Menyer {
                 fieldGroupName
+                helbild
                 text
+                text2
                 prisperson {
                   pris
                   antal

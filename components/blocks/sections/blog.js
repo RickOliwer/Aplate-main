@@ -228,24 +228,40 @@ export const Card = ( { cardContent } ) => {
     const [isForm, setForm] = useState(false)
     return (
         <div className="my-16 card-grid">
-            <div className="relative w-full h-full grid-item service-img">
+            <div className="relative w-full grid-item service-img">
                 {isEmpty(cardContent?.featuredImage?.node) ? null : (
 
-                    <Image 
-                        layout="fill"
-                        objectFit="cover"
-                        alt={cardContent?.featuredImage?.node?.altText}
-                        src={cardContent?.featuredImage?.node?.mediaItemUrl}
-                        priority
-                    />
+                    
+
+                            <Image 
+                                layout="fill"
+                                objectFit="cover"
+                                objectFit={cardContent?.GQL_cateringContent?.sektion?.map((img) => {
+                                    if(img?.helbild === true){
+                                        return 'cover'
+                                    }else{
+                                        return 'contain'
+                                    }
+                                })}
+                                alt={cardContent?.featuredImage?.node?.altText}
+                                src={cardContent?.featuredImage?.node?.mediaItemUrl}
+                                className="serv-img"
+                                priority
+                            />
+                    
+                   
                 )}
             </div>
             <div className="grid-item">
                 <p className="mb-2 special-elite">{cardContent?.title}</p>
                 {cardContent?.GQL_cateringContent?.sektion?.map((texttext) => {
                    return (
-                    
-                    <div key={texttext?.text} className="mb-4 text-sm font-light lg:w-2/4 parsed">{!isEmpty(texttext?.text) && parse(texttext?.text)}</div>
+                    <div key={texttext?.text} className="grid grid-cols-2 gap-16">
+                        <div  className="mb-4 text-sm font-light parsed">{!isEmpty(texttext?.text) && parse(texttext?.text)}</div>
+                        <div className="mb-4 text-sm font-light parsed">{!isEmpty(texttext?.text2) && parse(texttext?.text2)}</div>
+
+
+                    </div>
 
                    ) 
 
@@ -269,7 +285,7 @@ export const Card = ( { cardContent } ) => {
                 })}
             </div>
 
-            <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
+            <div id={`${cardContent?.id}`} className={`form-item ${isForm ? 'block' : 'hidden'}`}>
                 <Form subject={cardContent?.title} heading={`${cardContent?.title}`} />
             </div>
         </div>
