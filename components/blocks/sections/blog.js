@@ -12,7 +12,6 @@ const Blog = ( {content, post, tax}) => {
     const theRout = router?.query?.slug.toString()
     const routArr = router?.asPath?.split('/')
     const popArray = routArr?.pop()
-    
     const posts = [];
     post?.edges?.map((post) => {
         posts.push(post?.node)
@@ -65,7 +64,6 @@ const Blog = ( {content, post, tax}) => {
 
     const scrollRight = () => {
         let scrollright = theScroll?.current?.scrollLeft
-        console.log(theScroll?.current?.scrollLeft);
         scrollright += 200;
         theScroll.current.scrollLeft = scrollright
     }
@@ -116,7 +114,7 @@ const Blog = ( {content, post, tax}) => {
                                                         </li>
                                                     )
                                                 })
-                                            } else if (theRout === button?.slug) {
+                                            } else if (theRout === button?.slug && !router?.query?.subSlug) {
 
                                                 return (
                                                     <li className={`hover:text-aplate-price active:text-aplate-price ${router.asPath + '/' === child?.uri ? 'clicked' : ''}`} key={child?.slug}>
