@@ -11,7 +11,7 @@ const Menu = ( { content } ) => {
                     {content?.meny?.map((menus) => {
                         return (
                             <div key={menus?.dag} className="text-center">
-                                <h2 className="mb-4 text-xl">{menus?.dag}</h2>
+                                <p className="mb-4 text-xl special-elite">{menus?.dag}</p>
                                 <div className="mb-8">
                                     {menus?.maltider?.map((menu) => {
                                         return (
@@ -29,7 +29,7 @@ const Menu = ( { content } ) => {
                         {content?.alltidHosAplate?.map((always, index) => {
                             return (
                                 <div key={`${always?.maltid}${index}`}>
-                                    <h3 className="mb-2">{always?.rubrik}</h3>
+                                    <p className="mb-2 special-elite">{always?.rubrik}</p>
                                     <p className="mb-5 font-light">{always?.maltid}</p>
                                 </div>
                             )

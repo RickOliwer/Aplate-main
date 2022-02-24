@@ -43,8 +43,11 @@ export const ServiceCard = ( { service, isForm, setForm } ) => {
             </div>
 
             <div className="flex flex-col justify-center lg:pr-56 service-item">
-                <h3 className="">{service?.rubrik1}</h3>
-                <h2 className="mb-4 text-xl md:text-2xl">{service?.rubrik2}</h2>
+                <p className="flex flex-col">
+
+                    <span className="special-elite">{service?.rubrik1}</span>
+                    <span className="mb-4 text-xl special-elite md:text-2xl">{service?.rubrik2}</span>
+                </p>
                 {!isEmpty(service?.text) && (
                     <p className="mb-8">{service?.text}</p>
                 )}
@@ -99,8 +102,10 @@ export const ServiceCardRight = ( { service, isForm, setForm } ) => {
             </div>
 
             <div className="flex flex-col justify-center lg:pr-56 service-item-right">
-                <h3 className="">{service?.rubrik1}</h3>
-                <h2 className="mb-4 text-xl md:text-2xl">{service?.rubrik2}</h2>
+                <p className="flex flex-col">
+                    <span className="special-elite">{service?.rubrik1}</span>
+                    <span className="mb-4 text-xl special-elite md:text-2xl">{service?.rubrik2}</span>
+                </p>
                 {!isEmpty(service?.text) && (
                     <p className="mb-8">{service?.text}</p>
                 )}

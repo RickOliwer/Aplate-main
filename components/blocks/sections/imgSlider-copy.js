@@ -67,7 +67,7 @@ const ImageSliderCopy = ( { content } ) => {
                                             className="img"
                                         />
                                         <div className="absolute left-0 z-10 w-full h-full p-10 md:p-20 md:w-3/6 top-2/4 -translate-y-2/4 text-aplate-white">
-                                            <h3 className="mb-4 text-xl md:text-3xl">{slide?.rubrik}</h3>
+                                            <p className="mb-4 text-xl special-elite md:text-3xl">{slide?.rubrik}</p>
                                             <p className="mb-24 text-sm md:text-lg">{slide?.text}</p>
                                             <div className="flex items-center">
                                                 <Line className="mr-8" />

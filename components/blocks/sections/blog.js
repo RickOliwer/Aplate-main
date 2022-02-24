@@ -143,18 +143,12 @@ const Blog = ( {content, post, tax}) => {
                         </div>
                         <Left onClick={scrollLeft} className={`absolute top-2/4 -translate-y-2/4 left-0 bg-aplate-white cat-button ${isOverflow ? 'block' : 'hidden'} ${isScrollLeft ? 'hidden' : 'block'}`} />
                         <Right onClick={scrollRight} className={`absolute top-2/4 -translate-y-2/4 right-0 bg-aplate-white cat-button ${isOverflow ? 'block' : 'hidden'} ${isScrollRight ? 'hidden' : 'block'}`} />
-                        {/* <button onClick={scrollRight} className={`absolute top-2/4 -translate-y-2/4 right-0 bg-aplate-white border cat-button ${isOverflow ? 'block' : 'hidden'}`}>right</button>
-
-                        <button onClick={scrollLeft} className={`absolute top-2/4 -translate-y-2/4 left-0 bg-aplate-white border cat-button ${isOverflow ? 'block' : 'hidden'}`}>left</button> */}
-                        
                     </div>
 
                     <div className="my-10 text-center">
                         {tax.nodes.map((parent) => {
 
-
                                     if(router?.asPath + '/' === parent.uri){
-                                        console.log('my parent', parent);
                                         return (
                                             <h2 className="text-2xl" key={`${parent?.id}"#€€#Q43`}>{parent?.name}</h2>
                                         )
@@ -186,7 +180,7 @@ const Blog = ( {content, post, tax}) => {
                         {theRout == 'catering' ? (
                             <div className="layout-top">
                             <div className="items-center px-10 pb-10 text-center">
-                                <h3 className="text-3xl">Populärt</h3>
+                                <p className="text-3xl special-elite">Populärt</p>
                             </div>
                             
                             <div className="grid-3">
@@ -247,7 +241,7 @@ export const Card = ( { cardContent } ) => {
                 )}
             </div>
             <div className="grid-item">
-                <h4 className="mb-2">{cardContent?.title}</h4>
+                <p className="mb-2 special-elite">{cardContent?.title}</p>
                 {cardContent?.GQL_cateringContent?.sektion?.map((texttext) => {
                    return (
                     

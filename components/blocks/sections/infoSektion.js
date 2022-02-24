@@ -30,10 +30,13 @@ const InfoSection = ( { content } ) => {
                 </div>
                 <div className="flex items-center b">
                     <div className="inline-block">
-                        {!isEmpty(content?.rubrik1) && (
-                            <h3 className="text-2xl">{content?.rubrik1}</h3>
-                        )}
-                        <h2 className="text-4xl">{content?.rubrik2}</h2>
+                        <h2 className="flex flex-col">
+                            {!isEmpty(content?.rubrik1) && (
+                                <span className="text-2xl">{content?.rubrik1}</span>
+                            )}
+                            <span className="text-4xl">{content?.rubrik2}</span>
+                            
+                        </h2>
                         <p className="text-lg font-light">{content?.text}</p>
                         {!isEmpty(content?.avslut) && (
                             <p className="mt-4 text-lg font-light">{content?.avslut}</p>

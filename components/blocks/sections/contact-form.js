@@ -35,17 +35,17 @@ const ContactForm = () => {
             <div className="col-span-2 py-10 border md:col-span-1 border-aplate-black">
                 <div className="flex flex-col items-center justify-around h-full text-center">
                     <div className="mb-16 md:mb-0">
-                        <h3 className="mb-2 text-3xl">telefon.</h3>
+                        <h2 className="mb-2 text-3xl">telefon.</h2>
                         <p className="">0709 - 99 91 83</p>
                     </div>
 
                     <div className="mb-16 md:mb-0">
-                        <h3 className="mb-2 text-3xl">mail.</h3>
+                        <h2 className="mb-2 text-3xl">mail.</h2>
                         <p className="">info@aplate.se</p>
                     </div>
 
                     <div className="mb-16 md:mb-0">
-                        <h3 className="mb-2 text-3xl">adress.</h3>
+                        <h2 className="mb-2 text-3xl">adress.</h2>
                         <p className="">Medeon Science Park,</p>
                         <p className="">Per Albin Hanssons väg 41, 205 12</p>
                         <p className="">Malmö</p>
@@ -55,7 +55,7 @@ const ContactForm = () => {
             </div>
             <div className="col-span-2 md:col-span-1">
 
-                <h4 className="mb-2 text-xl">Kontaktformulär.</h4>
+                <h3 className="mb-2 text-xl">Kontaktformulär.</h3>
                 <p className="">Använd gärna vårt formulär nedan för att</p>
                 <p className="mb-6">komma i kontakt med oss.</p>
 

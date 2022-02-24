@@ -8,17 +8,16 @@ const Faq = ( { content } ) => {
     }
     return (
         <div className="layout layout-top">
-            <div className="mb-12 text-center">
-                <h3 className="text-xl">{content?.rubrik1}</h3>
-                <h2 className="text-3xl">{content?.rubrik2}</h2>
-            </div>
+            <h3 className="flex flex-col mb-12 text-center">
+                <span className="text-xl">{content?.rubrik1}</span>
+                <span className="text-3xl">{content?.rubrik2}</span>
+            </h3>
             <div className="grid-3">
                 {content?.fraga?.map((faq) => {
                     return (
                         <div key={`${faq?.knapp?.url?.id}${faq?.rubrik}`} className="flex flex-col justify-between px-6 py-6 border border-aplate-black">
                             <div>
-
-                                <h3 className="mb-3 text-xl lg:text-2xl">{faq?.rubrik}</h3>
+                                <p className="mb-3 text-xl special-elite lg:text-2xl">{faq?.rubrik}</p>
                                 <p className="pr-20 pb-36">{faq?.text}</p>
                             </div>
 
