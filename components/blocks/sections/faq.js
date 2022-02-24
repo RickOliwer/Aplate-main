@@ -3,6 +3,9 @@ import Link from "next/link";
 import { ArrowBlack } from "../../icons";
 
 const Faq = ( { content } ) => {
+    if(isEmpty(content)){
+        return null
+    }
     return (
         <div className="layout layout-top">
             <div className="mb-12 text-center">

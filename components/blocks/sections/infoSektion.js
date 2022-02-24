@@ -5,12 +5,17 @@ import { useEffect, useState } from "react";
 import { ArrowBlack } from "../../icons";
 
 const InfoSection = ( { content } ) => {
+
     const [isReverse, setReverse] = useState(null)
     useEffect(() =>{
         if(content?.installningar?.galleriHoger == true ){
             setReverse(true)
         }
     }, [content?.installningar?.galleriHoger, setReverse])
+
+    if(isEmpty(content)){
+        return null
+    }
     return (
         <>
 

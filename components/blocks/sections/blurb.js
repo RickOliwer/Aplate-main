@@ -7,6 +7,8 @@ import { ArrowBlack } from '../../icons';
 import handleParse from '../../../src/utils/parse';
 
 const Blurb = ( { content } ) => {
+
+
     const [isLayoutOne, setLayoutOne] = useState(false)
     const [isLayoutTwo, setLayoutTwo] = useState(false)
     const layout = useRef()
@@ -18,6 +20,10 @@ const Blurb = ( { content } ) => {
             setLayoutTwo(true)
         }
     }, [layout, setLayoutOne, setLayoutTwo])
+    
+    if(isEmpty(content)){
+        return null
+    }
     return (
         <div className="layout layout-top">
             <div ref={layout} className={`grid gap-24 md:grid-cols-3 ${isLayoutOne ? 'md:grid-cols-1 lg:px-72 md:px-44' : ''} ${isLayoutTwo ? 'md:grid-cols-2' : ''}`}>

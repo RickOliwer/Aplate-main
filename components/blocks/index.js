@@ -12,6 +12,9 @@ import Service from "./sections/service";
 import Textarea from "./sections/textarea";
 
 const Blocks = ( { blocks, post, tax, subBlock } ) => {
+    if(isEmpty(blocks)){
+        return null
+    }
     return (
         <div>
             {blocks?.sektion?.map((block, index) => {

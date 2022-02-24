@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { Line, Mail, Phone } from "../../icons";
 
 const Jumbotron = ( { content } ) => {
+    if(isEmpty(content)){
+        return null
+    }
 
     return (
         <>

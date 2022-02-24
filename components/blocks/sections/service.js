@@ -4,7 +4,11 @@ import { useState } from "react";
 import Form from "./form";
 
 const Service = ( { content } ) => {
+
     const [isForm, setForm] = useState(false)
+    if(isEmpty(content)){
+        return null
+    }
     return (
         <div className="layout layout-top">
             <div className="">

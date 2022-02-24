@@ -8,6 +8,7 @@ import Form from "./form";
 import parse from "html-react-parser"
 
 const Blog = ( {content, post, tax}) => {
+
     const router = useRouter()
     const theRout = router?.query?.slug.toString()
     const routArr = router?.asPath?.split('/')
@@ -76,6 +77,9 @@ const Blog = ( {content, post, tax}) => {
     const slug = router.asPath.split('/')
     slug.pop()
     const slugJoin = slug.join('/')
+    if(isEmpty(content && post && tax)){
+        return null
+    }
 
     return (
         <>
@@ -142,6 +146,40 @@ const Blog = ( {content, post, tax}) => {
                         {/* <button onClick={scrollRight} className={`absolute top-2/4 -translate-y-2/4 right-0 bg-aplate-white border cat-button ${isOverflow ? 'block' : 'hidden'}`}>right</button>
 
                         <button onClick={scrollLeft} className={`absolute top-2/4 -translate-y-2/4 left-0 bg-aplate-white border cat-button ${isOverflow ? 'block' : 'hidden'}`}>left</button> */}
+                        
+                    </div>
+
+                    <div className="my-10 text-center">
+                        {tax.nodes.map((parent) => {
+
+
+                                    if(router?.asPath + '/' === parent.uri){
+                                        console.log('my parent', parent);
+                                        return (
+                                            <h2 className="text-2xl" key={`${parent?.id}"#€€#Q43`}>{parent?.name}</h2>
+                                        )
+                                    } else {
+                                        return parent?.children?.nodes?.map((child) => {
+                                            if(router?.asPath + '/' === child.uri){
+                                                return (
+                                                    <h2 className="text-2xl" key={`${child?.id}"#€€#Q43`}>{child?.name}</h2>
+                                                )
+                                            } else {
+
+                                                return child?.childChild?.nodes?.map((grandChild) => {
+                                                    if(router?.asPath + '/' === grandChild.uri){
+                                                    return (
+                                                        <h2 className="text-2xl" key={`${grandChild?.id}"#€€#Q43`}>{grandChild?.name}</h2>
+                                                    )
+                                                    }else {
+                                                        return null
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+                        })}
+                        
                     </div>
 
                     <div className="card-container">

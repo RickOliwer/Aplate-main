@@ -1,6 +1,9 @@
 import isEmpty from "lodash.isempty";
 
 const Menu = ( { content } ) => {
+    if(isEmpty(content)){
+        return null
+    }
     return (
         <div className="layout">
             <div className="grid lg:grid-cols-2">

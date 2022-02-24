@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { LeftImageSlider, Line, RightImageSlider } from "../../icons";
 
 const ImageSlider = ( { content } ) => {
+
     const [isCurrent, setCurrent] = useState(0)
     const refLength = content?.referens.length
 
@@ -32,6 +33,10 @@ const ImageSlider = ( { content } ) => {
 
     const dotClick = (index) => {
         setCurrent(index)
+    }
+
+    if(isEmpty(content)){
+        return null
     }
     return (
         <section className="slider-container layout layout-top">
