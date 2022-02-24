@@ -201,7 +201,7 @@ const Form = ( {subject, heading} ) => {
                         <input
                             type="submit" 
                             name="submit"
-                            className="py-3 mt-8 rounded cursor-pointer special-elite px-14 bg-aplate-rost text-aplate-white"
+                            className="py-3 mt-8 transition duration-500 ease-in-out rounded cursor-pointer hover:scale-105 special-elite px-14 bg-aplate-rost text-aplate-white"
                             value="Skicka"
                         />
 

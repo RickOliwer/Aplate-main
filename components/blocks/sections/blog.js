@@ -230,7 +230,7 @@ export const Card = ( { cardContent } ) => {
                                 <p className="mb-4 text-sm font-light">{price?.prisperson?.antal}</p>
                             </div>
                             <div>
-                                <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
+                                <button onClick={() => setForm(!isForm)} className="px-4 py-4 transition duration-500 ease-in-out rounded hover:scale-105 special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
                             </div>
                         </div>
                     )

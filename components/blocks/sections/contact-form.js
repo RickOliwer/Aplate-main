@@ -10,7 +10,6 @@ const ContactForm = () => {
     const [isSubmitted, setSubmitted] = useState(false)
 
     async function onSubmitForm(values){
-        console.log('you got mail', values);
         let config = {
             method: 'post',
             url: `${process.env.NEXT_PUBLIC_API_URL}`,

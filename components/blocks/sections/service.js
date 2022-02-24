@@ -60,13 +60,18 @@ export const ServiceCard = ( { service, isForm, setForm } ) => {
                     <p className="mb-20 urbanist-italic">{service?.avslutItalic}</p>
                 )}
                 <div>
-                    <button onClick={() => setForm(!isForm)} className="px-4 py-4 rounded special-elite bg-aplate-rost text-aplate-white">Gör en förfrågan</button>
+                    <button onClick={() => setForm(!isForm)} className="px-4 py-4 transition duration-500 ease-in-out rounded special-elite bg-aplate-rost hover:scale-105 text-aplate-white">Gör en förfrågan</button>
                 </div>
             </div>
 
             <div className={`form-item ${isForm ? 'block' : 'hidden'}`}>
                 <Form heading={`${service?.rubrik1} ${service?.rubrik2}`} subject={isEmpty(service?.tjanst) ? (
-                    service?.rubrik1 + service?.rubrik2
+                    isEmpty(service?.rubrik1) ? (
+                        service?.rubrik2
+                    ) : (
+
+                        service?.rubrik1 + service?.rubrik2
+                    )
                 ) : (
                     service?.tjanst
                 )} />

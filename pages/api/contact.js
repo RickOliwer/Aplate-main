@@ -24,8 +24,6 @@ const Mail = async (req, res) => {
       </div>
       `,
     })
-
-    console.log('message sent');
   } catch (error) {
     console.log(error);
   }
