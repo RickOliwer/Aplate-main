@@ -60,13 +60,16 @@ query GET_SUB_PAGE($uri: String) {
                   dag
                   maltider {
                     maltid
+                    pris
                   }
                 }
                 alltidHosAplate {
                   rubrik
                   maltid
+                  pris
                 }
                 bokaBord
+                bokaBordKnapp
               }
               ... on Page_GqlPagecontent_Sektion_VanligaFragor {
                 fieldGroupName

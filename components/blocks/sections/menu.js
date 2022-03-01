@@ -1,6 +1,9 @@
 import isEmpty from "lodash.isempty";
+import { useState } from "react";
+import Form from "./form";
 
 const Menu = ( { content } ) => {
+    const [isForm, setForm] = useState(false)
     if(isEmpty(content)){
         return null
     }
@@ -15,7 +18,14 @@ const Menu = ( { content } ) => {
                                 <div className="mb-8">
                                     {menus?.maltider?.map((menu) => {
                                         return (
-                                            <p key={menu?.maltid} className="mb-2 font-light">{menu?.maltid}</p>
+                                            <div key={menu?.maltid}>
+                                                <p className="mb-2 font-light">{menu?.maltid}</p>
+                                                {!isEmpty(menu?.pris) && (
+                                                    <p className="mb-2 font-light">{menu?.pris}</p>
+
+                                                )}
+
+                                            </div>
                                         )
                                     })}
                                 </div>
@@ -30,17 +40,37 @@ const Menu = ( { content } ) => {
                             return (
                                 <div key={`${always?.maltid}${index}`}>
                                     <p className="mb-2 special-elite">{always?.rubrik}</p>
-                                    <p className="mb-5 font-light">{always?.maltid}</p>
+                                    <p className={`font-light ${isEmpty(always?.pris) ? 'mb-5' : 'mb-2'}`}>{always?.maltid}</p>
+                                    {!isEmpty(always?.pris) && (
+                                        <p className="mb-5 font-light">{always?.pris}</p>
+
+                                    )}
                                 </div>
                             )
                         })}
                     </div>
                     <div className="mb-10">
                         <h2 className="my-4 text-xl">Boka bord</h2>
-                        <p className="font-light">{content?.bokaBord}</p>
+                        {!isEmpty(content?.bokaBord) && (
+                            <p className={`font-light ${content?.bokaBordKnapp == true ? 'mb-4' : ''}`}>{content?.bokaBord}</p>
+
+                        )}
+                        {content?.bokaBordKnapp == true && (
+                            <div>
+                                <button 
+                                onClick={() => setForm(!isForm)} 
+                                className="px-4 py-4 transition duration-500 ease-in-out rounded special-elite bg-aplate-rost hover:scale-105 text-aplate-white">Boka bord</button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
+            {content?.bokaBordKnapp == true && (
+
+                <div className={`form-item layout-top ${isForm ? 'block' : 'hidden'}`}>
+                    <Form heading={`Boka Bord`} subject={`Boka Bord`} />
+                </div>
+            )}
         </div>
     );
 }

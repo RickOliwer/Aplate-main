@@ -235,7 +235,6 @@ export const Card = ( { cardContent } ) => {
 
                             <Image 
                                 layout="fill"
-                                objectFit="cover"
                                 objectFit={cardContent?.GQL_cateringContent?.sektion?.map((img) => {
                                     if(img?.helbild === true){
                                         return 'cover'
