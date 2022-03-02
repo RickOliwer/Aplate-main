@@ -9,10 +9,7 @@ import staticHeader from "../../data/header-static.json"
 import staticFooter from "../../data/footer-static.json"
 
 const Layout = ({children, data}) => {
-    if(isEmpty(data?.page || data?.subPage || data?.cateringPage)){
-        return null
-    }
-    
+
     const {page, subPage, HeroImage} = data || {};
     return (
         <div>
