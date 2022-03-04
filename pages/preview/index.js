@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 import Client from "../../src/apollo/client";
-import { GET_PAGE } from "../../src/queries/pages/get-page";
 
 const Preview = () => {
     return (
@@ -20,9 +19,14 @@ export async function getStaticProps(context){
         query GET_PREVIEW_PAGE($id: ID!) {
             page(idType: DATABASE_ID, id: $id) {
               title
+              id
+              pageId
               preview {
                 node {
+                  uri
+                  slug
                   title
+                  pageId
                 }
               }
             }

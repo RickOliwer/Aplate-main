@@ -13,6 +13,7 @@
     "@apollo/client": "^3.5.8",
     "@sendgrid/mail": "^7.6.1",
     "axios": "^0.26.0",
+    "cookie": "^0.4.2",
     "dompurify": "^2.3.5",
     "dotenv": "^16.0.0",
     "graphql": "^16.3.0",
@@ -27,7 +28,9 @@
     "react-dom": "17.0.2",
     "react-hook-form": "^7.27.0",
     "sass": "^1.49.7",
-    "sharp": "^0.30.1"
+    "sharp": "^0.30.1",
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@svgr/cli": "^6.2.1",
