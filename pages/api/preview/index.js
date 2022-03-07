@@ -1,8 +1,8 @@
 const handler = async (req, res) => {
-    const {token, id, type} = req.query
+    const {secret, id, type} = req.query
     
     try {
-        if(token !== process.env.PREVIEW_TOKEN){
+        if(secret !== process.env.PREVIEW_TOKEN){
             res.status(404).send('invalid token')
             return
         }

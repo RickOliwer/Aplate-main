@@ -9,7 +9,15 @@ const Client = new ApolloClient({
     headers: {
         Authorization: `Basic ${auth}`,
     },
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    defaultOptions: {
+        query: {
+          fetchPolicy: 'no-cache',
+        },
+        watchQuery: {
+          fetchPolicy: 'no-cache',
+        },
+      },
 })
 
 export default Client;
